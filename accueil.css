@@ -5,4 +5,24 @@ nav ul {
   background-color: #b9b2b1;
   display:inline-flex;
   justify-content: space-between;
+ overflow: hidden;
+  background-color: #333333;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: left;
+  border-right: 1px solid #bbbbbb;
+}
+
+ul li a:hover {
+  background-color: #111111;
+}
+
+ul li:last-child {
+  border-right: none;
 }
