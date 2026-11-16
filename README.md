@@ -1,4 +1,4 @@
-Fichier pour expliquer le projet Eni-Memory-Jade
+Fichier pour expliquer le projet Eni-Memory-Hina
  
 …or create a new repository on the command line
 echo "# Eni-Memory-Hina" >> README.md
