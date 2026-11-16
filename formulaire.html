@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S'inscrire</title>
+    <link rel="stylesheet" href="formulaire.css">
+</head>
+<body>
+    <h1>ENI - MEMORY - Accueil</h1>    
+    <nav class="Menu">
+        <ul>
+            <li><a href="#Accueil" target="_blank" rel="noopener noreferrer">Accueil</a></li>
+            <li><a href="#Jouer" target="_blank" rel="noopener noreferrer">Jouer</a></li>
+            <li><a href="formulaire.html" target="_blank" rel="noopener noreferrer">S'inscrire</a></li>
+            <li><a href="#Connection" target="_blank" rel="noopener noreferrer">Se connecter</a></li>
+            <li><a href="#Profil" target="_blank" rel="noopener noreferrer">Profil</a></li>
+            </li>
+        </ul>
+    </nav>
+    <h2>Inscrivez-vous !</h2>
+    <form action="/memory.html" method="post">
+      <ul>
+        <li>
+          <label for="name">Nom d'utilisateur</label>
+          <input
+            type="text"
+            id="nom"
+            name="user_name"
+            autofocus
+            required
+            placeholder="Nom de famille"
+            pattern="[A-Za-z]{3}"
+            title="Saisissez votre nom de famille (Minimum de 3 caractères.)"
+          />
+        </li>
+          <li>
+          <label for="email">Entrez votre email</label>
+          <input
+            type="email"
+            id="mail"
+            name="user_mail"
+            placeholder="janedoe@mail.com"
+            title="Saisissez votre adresse email."
+          />
+        </li>
+        <li>
+          <label for="password">Mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            name="user_password"
+            pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
+            title="Saisissez un mot de passe comprenant : minimum 8 caractères, des lettres majuscules et des lettres minuscules, et des chifffres"
+          />
+        </li>
+        <li>
+          <label for="password">Confirmer le mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            name="user_password"
+            pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
+            title="Saisissez un mot de passe comprenant : minimum 8 caractères, des lettres majuscules et des lettres minuscules, et des chifffres"
+          />
+        </li>
+      </ul>
+      <div class="button">
+        <button type="submit">Création du compte</button>
+        <button type="submit">Annuler</button>
+      </div>
+    </form>
+</body>
+</html>
