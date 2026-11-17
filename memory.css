@@ -41,15 +41,30 @@ nav ul {
 
 nav ul li{
   flex : 1;
+  display: flex;
 }
 
 nav ul li a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex : 1;
   color: white;
   padding: 14px 16px;
   text-decoration: none;
   border-right: 1px solid #bbbbbb;
   text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width : 700px){
+  nav ul{
+    width : 95%:
+  }
+  nav ul li a{
+    padding: 12px 6px;
+    font-size: 0.85rem;
+  }
 }
 
 nav ul li a:hover {
@@ -63,6 +78,10 @@ nav ul li:last-child a {
 li{
   color: white;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+li.choice{
+  text-decoration: none;
 }
 
 label{
@@ -81,7 +100,8 @@ p.rule{
 font-weight:lighter;
 color: #bbbbbb;
 font-size: small;
-line-height: 0%;
+line-height: 1;
+margin: 0.4rem 0 0;
 }
 
 h2{
@@ -111,8 +131,19 @@ fieldset ul.rules{
   padding-left: 1.5rem;
 }
 
+fieldset.ul,
+.button{
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 fieldset li{
   margin-bottom: 1.2rem;
+}
+
+fieldset h2{
+  text-align: center;
 }
 
 input[type="text"],
@@ -150,11 +181,20 @@ input::placeholder{
 
 button{
   padding: 10px 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border: none;
   border-radius: 8px;
-  background-color: #94BBE9;
+  background-color: #d8d7d7;
+  color: #333333;
   cursor: pointer;
   font-weight: bold;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 button:hover{
