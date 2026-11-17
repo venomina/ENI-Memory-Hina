@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="accueil.css">
+    <title>Se connecter</title>
+</head>
+<body>
+    <h1>ENI - Memory</h1>
+    <nav class="Menu">
+        <ul>
+            <li><a href="accueil.html" target="_blank" rel="noopener noreferrer">Accueil</a></li>
+            <li><a href="play.html" target="_blank" rel="noopener noreferrer">Jouer</a></li>
+           <li><a href="inscription.html" target="_blank" rel="noopener noreferrer">S'inscrire</a></li>
+            <li><a href="signup.html" target="_blank" rel="noopener noreferrer">Se connecter</a></li>
+            <li><a href="profile.html" target="_blank" rel="noopener noreferrer">Profil</a></li>
+        </ul>
+    </nav>
+    <br>
+    <fieldset>
+      <h2>Connectez-vous !</h2>
+    <form action="accueil.html" method="get">
+      <ul>
+          <li>
+          <label for="mail">Entrez votre email</label>
+          <br>
+          <input
+            type="email"
+            id="mail"
+            name="user_mail"
+            placeholder="janedoe@mail.com"
+            title="Saisissez votre adresse email."
+            required
+          />
+        </li>
+        <li>
+          <label for="password">Mot de passe</label>
+          <br>
+          <input
+            type="password"
+            id="password"
+            name="user_password"
+            pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}"
+            title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
+            required
+          />
+        </li>
+      </ul>
+      <div>
+              <input
+                type="checkbox"
+                id="choice"
+                name="choix"
+                value="choice"
+                checked
+              />
+              <label for="choice">Rester connecté ?</label>
+      </div>  
+      <br>      
+      <div class="button">
+        <button type="submit">Se connecter</button>
+        <button type="reset">Annuler</button>
+      </div> 
+    </form> 
+    </fieldset>
+</body>
+</html>
