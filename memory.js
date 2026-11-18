@@ -31,19 +31,41 @@ let nbAttempts = 0;
 let nbFound = 0;
 let gameOver = false;
 
-mixGrid(tabFaces);
-
 function updateAttempts() {
   attemptsDisplay.textContent = "Nombre de coups :" + nbAttempts;
 }
 
-tiles.forEach((oneTile, index) => {
+function gameReset() {
+  tiles.forEach((tile) => {
+    tile.classList.remove("found");
+    tile.querySelector("img").src = tilesBack;
+  });
+  firstIndex = null;
+  locked = false;
+  nbAttempts = 0;
+  gameOver = false;
+  finalMessage.textContent = "";
+  updateAttempts();
+  mixGrid(tabFaces);
+}
+
+function cardFlip(img, newImg) {
+  img.classList.add("flipping");
+  setTimeout(() => {
+    img.src = newImg;
+    img.classList.rmeove("flipping");
+  }, 200);
+}
+
+mixGrid(tabFaces);
+
+/*tiles.forEach((oneTile, index) => {
   oneTile.addEventListener("click", () => {
     console.log("oneTile :", index);
     const img = oneTile.querySelector("img");
     img.src = tabFaces[index];
   });
-});
+});*/
 
 mixGrid(tabFaces);
 
