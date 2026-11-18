@@ -1,16 +1,16 @@
 <!doctype html>
-<!-- Déclaration du type du document -->
+<!-- Déclaration du type du document-->
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Lien vers la feuille de style CSS de la page -->
     <link rel="stylesheet" href="memory.css" />
-    <title>Se connecter</title>
+    <title>ENI - Memory</title>
   </head>
   <body>
     <h1>ENI - Memory</h1>
-    <!-- Menu de navigation principal -->
+    <!-- Affichage barre du menu -->
     <nav class="Menu">
       <ul>
         <li><a href="accueil.html">Accueil</a></li>
@@ -21,55 +21,40 @@
       </ul>
     </nav>
     <br />
-
-    <!-- Bloc contenant le formulaire de connexion -->
     <fieldset>
-      <h2>Connectez-vous !</h2>
-      <form action="accueil.html" method="get">
-        <ul>
-          <!-- Champ email : le type "email" vérifie le format de l'adresse -->
-          <li>
-            <label for="mail">Entrez votre email</label>
-            <br />
-            <input
-              type="email"
-              id="mail"
-              name="user_mail"
-              placeholder="janedoe@mail.com"
-              title="Saisissez votre adresse email."
-              required
-            />
-          </li>
-          <!-- Champ mot de passe : le pattern impose 6 caractères minimum,
-               avec au moins 1 chiffre, 1 lettre et 1 symbole -->
-          <li>
-            <label for="password">Mot de passe</label>
-            <br />
-            <input
-              type="password"
-              id="password"
-              name="user_password"
-              pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}"
-              title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
-              required
-            />
-          </li>
-          <!-- Case à cocher, cochée par défaut -->
-          <li class="choice">
-            <input type="checkbox" id="choice" name="choix" value="choice" />
-            <label for="choice">Rester connecté ?</label>
-          </li>
-        </ul>
+      <h2>Profil</h2>
+      <div class="userProfile">
+        <!-- Avatar de l'utilisateur (taille fixée en ligne par le style) -->
+        <img
+          src="ressources\question.svg"
+          alt="Point d'interrogation bleu"
+          class="profileImage"
+          style="height: 5%; width: 5%"
+        />
+        <!-- Nom et adresse mail de l'utilisateur -->
+        <p class="profileName">Nom d'utilisateur :</p>
+        <p class="profileMail">Adresse mail :</p>
+        <p class=""></p>
         <br />
-        <!-- Boutons : envoyer le formulaire ou le réinitialiser -->
-        <div class="button">
-          <button type="submit">Se connecter</button>
-          <button type="reset">Annuler</button>
-        </div>
-      </form>
+
+        <!-- Le "for" correspond à l'id du select : cliquer sur le texte l'active -->
+        <label for="memory-select">Choix du memory :</label>
+        <!-- Liste déroulante pour choisir le thème du memory -->
+        <select name="tiles" id="memory-select">
+          <option value="">Veuillez sélectionner une option</option>
+          <option value="animatedPets">Animaux animés</option>
+          <option value="vegetables">Fruits et légumes</option>
+          <option value="animals">Animaux</option>
+          <option value="pets">Dinosaures</option>
+        </select>
+        <br />
+        <br />
+        <!-- Bouton d'enregistrement -->
+        <button type="submit">Enregistrez les modifications</button>
+      </div>
     </fieldset>
 
-    <!-- Ajout du script JS du jeu avec defer -->
+    <!-- Script chargé après le HTML grâce à "defer" -->
     <script src="memory.js" defer></script>
   </body>
 </html>
