@@ -57,7 +57,6 @@ function cardFlip(img, newImg) {
     img.classList.remove("flipping");
   }, 200);
 }
-
 mixGrid(tabFaces);
 
 tiles.forEach((oneTile, index) => {
@@ -73,7 +72,6 @@ tiles.forEach((oneTile, index) => {
       firstIndex = index;
       return;
     }
-
     nbAttempts++;
     updateAttempts();
 
