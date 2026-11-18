@@ -59,44 +59,52 @@ function cardFlip(img, newImg) {
 
 mixGrid(tabFaces);
 
-/*tiles.forEach((oneTile, index) => {
-  oneTile.addEventListener("click", () => {
-    console.log("oneTile :", index);
-    const img = oneTile.querySelector("img");
-    img.src = tabFaces[index];
-  });
-});*/
-
-mixGrid(tabFaces);
-
 tiles.forEach((oneTile, index) => {
   oneTile.addEventListener("click", () => {
     if (locked || index === firstIndex || oneTile.classList.contains("found")) {
       return;
     }
-
-    const img = oneTile.querySelector("img");
-    img.src = tabFaces[index];
-
-    if (firstIndex === null) {
-      firstIndex = index;
-      return;
-    }
-
-    const firstTile = tiles[firstIndex];
-
-    if (tabFaces[firstIndex] === tabFaces[index]) {
-      firstTile.classList.add("found");
-      oneTile.classList.add("found");
-      firstIndex = null;
-    } else {
-      locked = true;
-      setTimeout(() => {
-        firstTile.querySelector("img").src = tilesBack;
-        img.src = tilesBack;
-        firstIndex = null;
-        locked = false;
-      }, 3000);
-    }
   });
+});
+
+const img = oneTile.querySelector("img");
+
+cardFlip(img, tabFaces[index]);
+
+if (firstIndex === null) {
+  firstIndex = index;
+  return;
+}
+
+nbAttempts++;
+updateAttempts();
+
+const firstTile = tiles[firstIndex];
+
+if (tabFaces[firstIndex] === tabFaces[index]) {
+  firstTile.classList.add("found");
+  oneTile.classList.add("found");
+  firstIndex = null;
+
+  nbFound += 2;
+  if (nbFound === tiles.length) {
+    gameOver = true;
+    finalMessage.textContent =
+      "Bravo ! Vous avez gagné en " + nbAttempts + " coups !";
+  } else {
+    locked = true;
+    setTimeout(() => {
+      cardFlip(firstTile.querySelector("img"), tilesBack);
+      cardFlip(img, tilesBack);
+      firstIndex = null;
+      locked = false;
+    }, 1000);
+  }
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.code === "Space" && gameOver) {
+    event.preventDefault();
+    resetGame();
+  }
 });
