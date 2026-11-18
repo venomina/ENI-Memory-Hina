@@ -1,3 +1,4 @@
+const tilesBack = "ressources/question_bleus_pastel.svg";
 const tabFaces = [
   "ressources/memory-legume/1.svg",
   "ressources/memory-legume/2.svg",
@@ -13,11 +14,6 @@ const tabFaces = [
   "ressources/memory-legume/6.svg",
 ];
 
-const tilesBack = "ressources/question_bleus_pastel.svg";
-
-console.log(tabFaces);
-console.log(tilesBack);
-
 function mixGrid(tabFaces) {
   for (let i = 0; i < tabFaces.length - 1; i++) {
     const j = i + Math.floor(Math.random() * (tabFaces.length - i));
@@ -25,10 +21,21 @@ function mixGrid(tabFaces) {
   }
 }
 
-mixGrid(tabFaces);
-console.log(tabFaces);
-
 const tiles = document.querySelectorAll("td");
+const attemptsDisplay = document.querySelector("nbAttempts");
+const finalMessage = document.querySelector(".finalMessage");
+
+let firstIndex = null;
+let locked = false;
+let nbAttempts = 0;
+let nbFound = 0;
+let gameOver = false;
+
+mixGrid(tabFaces);
+
+function updateAttempts() {
+  attemptsDisplay.textContent = "Nombre de coups :" + nbAttempts;
+}
 
 tiles.forEach((oneTile, index) => {
   oneTile.addEventListener("click", () => {
@@ -37,9 +44,6 @@ tiles.forEach((oneTile, index) => {
     img.src = tabFaces[index];
   });
 });
-
-let firstIndex = null;
-let locked = false;
 
 mixGrid(tabFaces);
 
