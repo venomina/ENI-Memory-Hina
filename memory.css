@@ -117,6 +117,14 @@ p.nbAttempts {
   font-size: x-large;
 }
 
+p.finalMessage {
+  font-size: xx-large;
+}
+
+p.gameOn {
+  font-size: larger;
+}
+
 h2 {
   color: white;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -279,4 +287,12 @@ button:hover {
   gap: 1rem;
   max-width: 400px;
   margin: 1.5rem auto 0;
+}
+
+td img {
+  transition: transform 0.2s;
+}
+
+td img.flipping {
+  transform: scale(0);
 }

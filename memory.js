@@ -97,7 +97,7 @@ tiles.forEach((oneTile, index) => {
         cardFlip(img, tilesBack);
         firstIndex = null;
         locked = false;
-      }, 1000);
+      }, 2000);
     }
   });
 });
