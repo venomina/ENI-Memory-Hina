@@ -22,7 +22,7 @@ function mixGrid(tabFaces) {
 }
 
 const tiles = document.querySelectorAll("td");
-const attemptsDisplay = document.querySelector("nbAttempts");
+const attemptsDisplay = document.querySelector(".nbAttempts");
 const finalMessage = document.querySelector(".finalMessage");
 
 let firstIndex = null;
@@ -32,7 +32,7 @@ let nbFound = 0;
 let gameOver = false;
 
 function updateAttempts() {
-  attemptsDisplay.textContent = "Nombre de coups :" + nbAttempts;
+  attemptsDisplay.textContent = "Nombre de coups : " + nbAttempts;
 }
 
 function gameReset() {
@@ -43,6 +43,7 @@ function gameReset() {
   firstIndex = null;
   locked = false;
   nbAttempts = 0;
+  nbFound = 0;
   gameOver = false;
   finalMessage.textContent = "";
   updateAttempts();
@@ -53,7 +54,7 @@ function cardFlip(img, newImg) {
   img.classList.add("flipping");
   setTimeout(() => {
     img.src = newImg;
-    img.classList.rmeove("flipping");
+    img.classList.remove("flipping");
   }, 200);
 }
 
@@ -64,47 +65,46 @@ tiles.forEach((oneTile, index) => {
     if (locked || index === firstIndex || oneTile.classList.contains("found")) {
       return;
     }
+
+    const img = oneTile.querySelector("img");
+    cardFlip(img, tabFaces[index]);
+
+    if (firstIndex === null) {
+      firstIndex = index;
+      return;
+    }
+
+    nbAttempts++;
+    updateAttempts();
+
+    const firstTile = tiles[firstIndex];
+
+    if (tabFaces[firstIndex] === tabFaces[index]) {
+      firstTile.classList.add("found");
+      oneTile.classList.add("found");
+      firstIndex = null;
+
+      nbFound += 2;
+      if (nbFound === tiles.length) {
+        gameOver = true;
+        finalMessage.textContent =
+          "Bravo ! Vous avez gagné en " + nbAttempts + " coups !";
+      }
+    } else {
+      locked = true;
+      setTimeout(() => {
+        cardFlip(firstTile.querySelector("img"), tilesBack);
+        cardFlip(img, tilesBack);
+        firstIndex = null;
+        locked = false;
+      }, 1000);
+    }
   });
 });
-
-const img = oneTile.querySelector("img");
-
-cardFlip(img, tabFaces[index]);
-
-if (firstIndex === null) {
-  firstIndex = index;
-  return;
-}
-
-nbAttempts++;
-updateAttempts();
-
-const firstTile = tiles[firstIndex];
-
-if (tabFaces[firstIndex] === tabFaces[index]) {
-  firstTile.classList.add("found");
-  oneTile.classList.add("found");
-  firstIndex = null;
-
-  nbFound += 2;
-  if (nbFound === tiles.length) {
-    gameOver = true;
-    finalMessage.textContent =
-      "Bravo ! Vous avez gagné en " + nbAttempts + " coups !";
-  } else {
-    locked = true;
-    setTimeout(() => {
-      cardFlip(firstTile.querySelector("img"), tilesBack);
-      cardFlip(img, tilesBack);
-      firstIndex = null;
-      locked = false;
-    }, 1000);
-  }
-}
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space" && gameOver) {
     event.preventDefault();
-    resetGame();
+    gameReset();
   }
 });
