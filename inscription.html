@@ -1,63 +1,50 @@
 <!doctype html>
+<!-- Déclaration du type du document -->
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>S'inscrire</title>
+    <!-- Lien vers la feuille de style CSS de la page -->
     <link rel="stylesheet" href="memory.css" />
   </head>
   <body>
     <h1>ENI - Memory</h1>
+    <!-- Menu de navigation principal -->
     <nav class="Menu">
       <ul>
-        <li>
-          <a href="accueil.html" target="_blank" rel="noopener noreferrer"
-            >Accueil</a
-          >
-        </li>
-        <li>
-          <a href="play.html" target="_blank" rel="noopener noreferrer"
-            >Jouer</a
-          >
-        </li>
-        <li>
-          <a href="inscription.html" target="_blank" rel="noopener noreferrer"
-            >S'inscrire</a
-          >
-        </li>
-        <li>
-          <a href="signin.html" target="_blank" rel="noopener noreferrer"
-            >Se connecter</a
-          >
-        </li>
-        <li>
-          <a href="profile.html" target="_blank" rel="noopener noreferrer"
-            >Profil</a
-          >
-        </li>
+        <li><a href="accueil.html">Accueil</a></li>
+        <li><a href="play.html">Jouer</a></li>
+        <li><a href="inscription.html">S'inscrire</a></li>
+        <li><a href="signin.html">Se connecter</a></li>
+        <li><a href="profile.html">Profil</a></li>
       </ul>
     </nav>
     <br />
+
+    <!-- Bloc contenant le formulaire d'inscription -->
     <fieldset>
       <h2>Inscrivez-vous !</h2>
       <form action="/memory.html" method="post">
         <ul>
+          <!-- Champ nom d'utilisateur : autofocus place le curseur ici au chargement -->
           <li>
             <label for="name">Nom d'utilisateur</label>
             <br />
             <input
               type="text"
-              id="nom"
+              id="name"
               name="user_name"
               autofocus
               required
               placeholder="exemple : JaneD"
-              pattern="[A-Za-z]{3}"
+              pattern="[A-Za-z]{3,}"
               title="Saisissez votre nom de famille (Minimum de 3 caractères.)"
             />
           </li>
+          <!-- Champ email : le type "email" vérifie le format de l'adresse -->
           <li>
-            <label for="email">Entrez votre email</label>
+            <label for="mail">Entrez votre email</label>
             <br />
             <input
               type="email"
@@ -68,6 +55,7 @@
               required
             />
           </li>
+          <!-- Champ mot de passe : le pattern vérifie les règles de saisie -->
           <li>
             <label for="password">Mot de passe</label>
             <br />
@@ -75,33 +63,38 @@
               type="password"
               id="password"
               name="user_password"
-              pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
+              pattern="((?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,})"
               title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
               required
             />
+            <!-- Rappel des règles du mot de passe -->
             <p class="passRule">
               Minimum 6 caractères, 1 chiffre, 1 lettre, 1 symbole
             </p>
           </li>
           <br />
+          <!-- Confirmation du mot de passe par l'utilisateur-->
           <li>
-            <label for="password">Confirmer le mot de passe</label>
+            <label for="password-confirm">Confirmer le mot de passe</label>
             <br />
             <input
               type="password"
-              id="password"
-              name="user_password"
+              id="password-confirm"
+              name="user-password-confirm"
               pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
               required
             />
           </li>
         </ul>
+        <!-- Boutons : créer le compte ou réinitialiser le formulaire -->
         <div class="button">
           <button type="submit">Création du compte</button>
           <button type="reset">Annuler</button>
         </div>
       </form>
     </fieldset>
+
+    <!-- Ajout du script JS du jeu avec defer -->
     <script src="memory.js" defer></script>
   </body>
 </html>

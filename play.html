@@ -1,84 +1,140 @@
 <!doctype html>
+<!-- Déclaration du type du document -->
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Lien vers la feuille de style CSS de la page -->
     <link rel="stylesheet" href="memory.css" />
     <title>Jouer au Memory de l'ENI !</title>
   </head>
   <body>
     <h1>ENI - Memory</h1>
+    <!-- Menu de navigation principal -->
     <nav class="Menu">
       <ul>
         <li><a href="accueil.html">Accueil</a></li>
-        <li>
-          <a href="play.html" target="_blank" rel="noopener noreferrer"
-            >Jouer</a
-          >
-        </li>
+        <li><a href="play.html">Jouer</a></li>
         <li><a href="inscription.html">S'inscrire</a></li>
         <li><a href="signin.html">Se connecter</a></li>
-        <li>
-          <a href="profile.html" target="_blank" rel="noopener noreferrer"
-            >Profil</a
-          >
-        </li>
+        <li><a href="profile.html">Profil</a></li>
       </ul>
     </nav>
     <br />
+
+    <!-- Bloc contenant le jeu -->
     <fieldset class="memory-game">
+      <!-- Consignes du jeu -->
       <p class="gameOn">Tentez de gagner avec le moins d'essais possible !</p>
       <p class="gameOn">
         Appuyez sur la <strong>barre espace</strong> pour relancer le jeu une
         fois la partie terminée.
       </p>
       <br />
+      <!-- Compteur de coups (mis à jour par memory.js) -->
       <p class="nbAttempts">Nombre de coups : 0</p>
+
+      <!-- Plateau de jeu : 12 cartes réparties sur 3 lignes de 4 colonnes.
+           Chaque carte a un id unique (0 à 11) utilisé par memory.js
+           pour la retourner. Toutes affichent le dos de carte au départ. -->
       <table>
+        <!-- Ligne 1 : cartes 0 à 3 -->
         <tr>
           <td>
-            <a id="0"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile0"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="1"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile1"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="2"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile2"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="3"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile3"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
         </tr>
+        <!-- Ligne 2 : cartes 4 à 7 -->
         <tr>
           <td>
-            <a id="4"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile4"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="5"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile5"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="6"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile6"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="7"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile7"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
         </tr>
+        <!-- Ligne 3 : cartes 8 à 11 -->
         <tr>
           <td>
-            <a id="8"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile8"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="9"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile9"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="10"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile10"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
           <td>
-            <a id="11"><img src="/ressources/question_bleus_pastel.svg" /></a>
+            <a id="tile11"
+              ><img
+                src="/ressources/question_bleus_pastel.svg"
+                alt="Point d'interrogation bleu."
+            /></a>
           </td>
         </tr>
       </table>
     </fieldset>
+
+    <!-- Script JS du jeu -->
     <script src="memory.js"></script>
   </body>
 </html>

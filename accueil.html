@@ -1,13 +1,16 @@
 <!doctype html>
+<!-- Déclaration du type du document-->
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Lien vers la feuille de style CSS de la page -->
     <link rel="stylesheet" href="memory.css" />
     <title>ENI - Memory</title>
   </head>
   <body>
     <h1>ENI - Memory</h1>
+    <!-- Affichage barre du menu -->
     <nav class="Menu">
       <ul>
         <li><a href="accueil.html">Accueil</a></li>
@@ -17,6 +20,8 @@
         <li><a href="profile.html">Profil</a></li>
       </ul>
     </nav>
+
+    <!-- Bloc avec le contenu de la page d'accueil -->
     <fieldset class="accueilMemory">
       <p>Bienvenue sur le site du Memory de l'ENI.</p>
       <p>Venez jouer avec nous, et faites le meilleur score possible !</p>
@@ -36,11 +41,14 @@
           par paire.
         </li>
       </ul>
+
+      <!-- Image d'illustration du jeu (accessible avec alt) -->
       <img
-        src="/ressources/Cartes mémoire de fruits sur fond transparent.png"
+        src="/ressources/fruits-sur-fond-transparent.png"
         alt="Interface d’un jeu de memory mettant en scène des fruits et des légumes."
         class="exemple-memory"
       />
+
       <p>
         Si vous voulez vous souvenir de votre score, inscrivez-vous via le
         formulaire !
@@ -49,6 +57,7 @@
       <p>Si vous souhaitez relancer une partie, appuyez sur la barre espace.</p>
     </fieldset>
 
+    <!-- Ajout du script JS du jeu avec defer -->
     <script src="memory.js" defer></script>
   </body>
 </html>

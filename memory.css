@@ -1,5 +1,9 @@
+/*ENI - Memory : feuille de style commune à toutes les pages*/
+
 body {
+  /* Couleur de secours si le dégradé n'est pas supporté */
   background: #94bbe9;
+  /* Dégradé horizontal bleu → rose → vert */
   background: linear-gradient(
     90deg,
     rgba(148, 187, 233, 1) 0%,
@@ -13,6 +17,7 @@ body {
   min-height: 100vh;
 }
 
+/* ---------- Titre principal ---------- */
 h1 {
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -22,12 +27,15 @@ h1 {
   padding: 1rem;
   letter-spacing: 0.5rem;
 }
+
+/* Titre plus petit sur mobile */
 @media (max-width: 700px) {
   h1 {
     font-size: 48px;
   }
 }
 
+/* ---------- Barre de navigation ---------- */
 nav {
   display: flex;
   justify-content: center;
@@ -37,7 +45,6 @@ nav ul {
   width: 95%;
   max-width: 800px;
   display: flex;
-  justify-content: space-between;
   list-style-type: none;
   border-radius: 20px;
   overflow: hidden;
@@ -46,6 +53,7 @@ nav ul {
   padding: 0;
 }
 
+/* Chaque élément du menu prend la même largeur */
 nav ul li {
   flex: 1;
   display: flex;
@@ -64,10 +72,8 @@ nav ul li a {
   white-space: nowrap;
 }
 
+/* Liens plus compacts sur mobile */
 @media (max-width: 700px) {
-  nav ul {
-    width: 95%;
-  }
   nav ul li a {
     padding: 12px 4px;
     font-size: 0.8rem;
@@ -78,15 +84,13 @@ nav ul li a:hover {
   background-color: #111111;
 }
 
+/* Pas de séparateur après le dernier lien */
 nav ul li:last-child a {
   border-right: none;
 }
 
-li {
-  color: white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
+/* ---------- Textes ---------- */
+li,
 label {
   color: white;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -99,15 +103,16 @@ p {
   text-align: left;
 }
 
+/* Rappel des règles du mot de passe (inscription) */
 p.passRule {
   font-weight: lighter;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #bbbbbb;
   font-size: small;
   line-height: 1;
   margin: 0.4rem 0 0;
 }
 
+/* Compteur de coups (page de jeu) */
 p.nbAttempts {
   font-size: x-large;
 }
@@ -117,9 +122,10 @@ h2 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+/* ---------- Blocs (fieldset) ---------- */
+/* Bloc centré utilisé pour les formulaires */
 fieldset {
   background-color: #333333;
-  display: block;
   width: 90%;
   max-width: 560px;
   margin: 10vh auto;
@@ -129,12 +135,23 @@ fieldset {
   border-color: #111111;
 }
 
+fieldset h2 {
+  text-align: center;
+}
+
+/* Listes dans les blocs : sans puces, centrées et limitées à 400px */
 fieldset ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 400px;
 }
 
+fieldset li {
+  margin-bottom: 1.2rem;
+}
+
+/* Liste des règles du jeu : avec puces, sur toute la largeur */
 fieldset ul.gameRules {
   list-style-type: disc;
   padding-left: 1.5rem;
@@ -143,57 +160,62 @@ fieldset ul.gameRules {
   margin-right: 0;
 }
 
-fieldset li {
-  margin-bottom: 1.2rem;
-}
-
-fieldset h2 {
-  text-align: center;
-}
-
+/* Blocs plus larges pour l'accueil et le jeu */
 fieldset.accueilMemory,
 fieldset.memory-game {
   width: 95%;
   max-width: 900px;
   margin: 5vh auto;
-  background-color: #333333;
+}
+
+/* ---------- Plateau de jeu ---------- */
+fieldset.memory-game p {
+  text-align: center;
 }
 
 fieldset.memory-game table {
   width: 100%;
+  /* Colonnes de largeur égale */
   table-layout: fixed;
+  /* Espace de 12px entre les cartes */
   border-collapse: separate;
   border-spacing: 12px;
+  margin: 0 auto;
 }
 
+/* Une case = une carte */
 fieldset.memory-game td {
-  width: auto;
-  max-width: none;
-  height: auto;
-  max-height: none;
   padding: 0;
+  border: 1px solid white;
   border-radius: 12px;
   overflow: hidden;
   background-color: aliceblue;
+  text-align: center;
+  cursor: pointer;
 }
 
+fieldset.memory-game td:hover {
+  border: 1px solid black;
+}
+
+/* Image carrée qui remplit toute la carte */
 fieldset.memory-game td img {
   width: 100%;
   height: auto;
   aspect-ratio: 1/1;
 }
 
-fieldset.memory-game p {
-  text-align: center;
+/* Image d'illustration de la page d'accueil */
+img.exemple-memory {
+  display: block;
+  height: auto;
+  width: 100%;
+  max-width: 480px;
+  margin: 1.5rem auto;
 }
 
-fieldset ul,
-.button {
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/* ---------- Formulaires ---------- */
+/* Champs de saisie : simple ligne en bas, fond transparent */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -211,6 +233,7 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
+/* La ligne devient bleue quand le champ est actif */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
@@ -221,6 +244,19 @@ input::placeholder {
   color: #999999;
 }
 
+/* Case à cocher "Rester connecté" : case et texte alignés */
+li.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+/* ---------- Boutons ---------- */
 button {
   padding: 10px 20px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -232,60 +268,15 @@ button {
   font-weight: bold;
 }
 
-.button {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
 button:hover {
   background-color: #eeaeca;
 }
 
-.remember {
+/* Conteneur des boutons : centrés côte à côte */
+.button {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  list-style: none;
-}
-
-input[type="checkbox"] {
-  width: auto;
-  margin: 0;
-}
-
-table {
-  margin: 0 auto;
-  border-collapse: collapse;
-}
-
-td {
-  height: 15vh;
-  width: 15vh;
-  min-width: 60px;
-  max-width: 150px;
-  min-height: 60px;
-  max-height: 150px;
-  background-color: rgba(200, 200, 200, 0.2);
-  text-align: center;
-  align-content: center;
-  border: 1px solid white;
-  cursor: pointer;
-}
-
-td:hover {
-  border: 1px black solid;
-}
-
-img.exemple-memory {
-  display: block;
-  height: auto;
-  width: 100%;
-  max-width: 480px;
-  margin: 1.5rem auto;
-}
-
-section {
-  margin-top: 10vh;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 1.5rem auto 0;
 }

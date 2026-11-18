@@ -1,35 +1,33 @@
 <!doctype html>
+<!-- Déclaration du type du document -->
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Lien vers la feuille de style CSS de la page -->
     <link rel="stylesheet" href="memory.css" />
     <title>Se connecter</title>
   </head>
   <body>
     <h1>ENI - Memory</h1>
+    <!-- Menu de navigation principal -->
     <nav class="Menu">
       <ul>
         <li><a href="accueil.html">Accueil</a></li>
-        <li>
-          <a href="play.html" target="_blank" rel="noopener noreferrer"
-            >Jouer</a
-          >
-        </li>
+        <li><a href="play.html">Jouer</a></li>
         <li><a href="inscription.html">S'inscrire</a></li>
         <li><a href="signin.html">Se connecter</a></li>
-        <li>
-          <a href="profile.html" target="_blank" rel="noopener noreferrer"
-            >Profil</a
-          >
-        </li>
+        <li><a href="profile.html">Profil</a></li>
       </ul>
     </nav>
     <br />
+
+    <!-- Bloc contenant le formulaire de connexion -->
     <fieldset>
       <h2>Connectez-vous !</h2>
       <form action="accueil.html" method="get">
         <ul>
+          <!-- Champ email : le type "email" vérifie le format de l'adresse -->
           <li>
             <label for="mail">Entrez votre email</label>
             <br />
@@ -42,6 +40,8 @@
               required
             />
           </li>
+          <!-- Champ mot de passe : le pattern impose 6 caractères minimum,
+               avec au moins 1 chiffre, 1 lettre et 1 symbole -->
           <li>
             <label for="password">Mot de passe</label>
             <br />
@@ -49,11 +49,12 @@
               type="password"
               id="password"
               name="user_password"
-              pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}"
+              pattern="((?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,})"
               title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
               required
             />
           </li>
+          <!-- Case à cocher, cochée par défaut -->
           <li class="choice">
             <input
               type="checkbox"
@@ -66,12 +67,15 @@
           </li>
         </ul>
         <br />
+        <!-- Boutons : envoyer le formulaire ou le réinitialiser -->
         <div class="button">
           <button type="submit">Se connecter</button>
           <button type="reset">Annuler</button>
         </div>
       </form>
     </fieldset>
+
+    <!-- Ajout du script JS du jeu avec defer -->
     <script src="memory.js" defer></script>
   </body>
 </html>
