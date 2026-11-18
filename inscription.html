@@ -1,85 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>S'inscrire</title>
-    <link rel="stylesheet" href="memory.css">
-</head>
-<body>
-    <h1>ENI - Memory</h1>    
+    <link rel="stylesheet" href="memory.css" />
+  </head>
+  <body>
+    <h1>ENI - Memory</h1>
     <nav class="Menu">
-        <ul>
-            <li><a href="accueil.html" target="_blank" rel="noopener noreferrer">Accueil</a></li>
-            <li><a href="play.html" target="_blank" rel="noopener noreferrer">Jouer</a></li>
-            <li><a href="inscription.html" target="_blank" rel="noopener noreferrer">S'inscrire</a></li>
-            <li><a href="signin.html" target="_blank" rel="noopener noreferrer">Se connecter</a></li>
-            <li><a href="profile.html" target="_blank" rel="noopener noreferrer">Profil</a></li>
-        </ul>
+      <ul>
+        <li>
+          <a href="accueil.html" target="_blank" rel="noopener noreferrer"
+            >Accueil</a
+          >
+        </li>
+        <li>
+          <a href="play.html" target="_blank" rel="noopener noreferrer"
+            >Jouer</a
+          >
+        </li>
+        <li>
+          <a href="inscription.html" target="_blank" rel="noopener noreferrer"
+            >S'inscrire</a
+          >
+        </li>
+        <li>
+          <a href="signin.html" target="_blank" rel="noopener noreferrer"
+            >Se connecter</a
+          >
+        </li>
+        <li>
+          <a href="profile.html" target="_blank" rel="noopener noreferrer"
+            >Profil</a
+          >
+        </li>
+      </ul>
     </nav>
-    <br>
+    <br />
     <fieldset>
       <h2>Inscrivez-vous !</h2>
       <form action="/memory.html" method="post">
-      <ul>
-        <li>
-          <label for="name">Nom d'utilisateur</label>
-          <br>
-          <input
-            type="text"
-            id="nom"
-            name="user_name"
-            autofocus
-            required
-            placeholder="exemple : JaneD"
-            pattern="[A-Za-z]{3}"
-            title="Saisissez votre nom de famille (Minimum de 3 caractères.)"
-          />
-        </li>
+        <ul>
           <li>
-          <label for="email">Entrez votre email</label>
-          <br>
-          <input
-            type="email"
-            id="mail"
-            name="user_mail"
-            placeholder="exemple : janedoe@mail.com"
-            title="Saisissez votre adresse email."
-            required
-          />
-        </li>
-        <li>
-          <label for="password">Mot de passe</label>
-          <br>
-          <input
-            type="password"
-            id="password"
-            name="user_password"
-            pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
-            title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
-            required
-          />
-           <p class="passRule">Minimum 6 caractères, 1 chiffre, 1 lettre, 1 symbole</p>
-        </li>
-        <br>
-        <li>
-          <label for="password">Confirmer le mot de passe</label>
-          <br>
-          <input
-            type="password"
-            id="password"
-            name="user_password"
-            pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
-            required
-          />
-        </li>
-      </ul>      
-      <div class="button">
-        <button type="submit">Création du compte</button>
-        <button type="reset">Annuler</button>
-      </div>
+            <label for="name">Nom d'utilisateur</label>
+            <br />
+            <input
+              type="text"
+              id="nom"
+              name="user_name"
+              autofocus
+              required
+              placeholder="exemple : JaneD"
+              pattern="[A-Za-z]{3}"
+              title="Saisissez votre nom de famille (Minimum de 3 caractères.)"
+            />
+          </li>
+          <li>
+            <label for="email">Entrez votre email</label>
+            <br />
+            <input
+              type="email"
+              id="mail"
+              name="user_mail"
+              placeholder="exemple : janedoe@mail.com"
+              title="Saisissez votre adresse email."
+              required
+            />
+          </li>
+          <li>
+            <label for="password">Mot de passe</label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              name="user_password"
+              pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
+              title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
+              required
+            />
+            <p class="passRule">
+              Minimum 6 caractères, 1 chiffre, 1 lettre, 1 symbole
+            </p>
+          </li>
+          <br />
+          <li>
+            <label for="password">Confirmer le mot de passe</label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              name="user_password"
+              pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
+              required
+            />
+          </li>
+        </ul>
+        <div class="button">
+          <button type="submit">Création du compte</button>
+          <button type="reset">Annuler</button>
+        </div>
       </form>
     </fieldset>
     <script src="memory.js" defer></script>
-</body>
+  </body>
 </html>

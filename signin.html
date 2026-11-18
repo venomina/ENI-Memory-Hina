@@ -1,69 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="memory.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="memory.css" />
     <title>Se connecter</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>ENI - Memory</h1>
     <nav class="Menu">
-         <ul>
-            <li><a href="accueil.html">Accueil</a></li>
-            <li><a href="play.html" target="_blank" rel="noopener noreferrer">Jouer</a></li>
-           <li><a href="inscription.html">S'inscrire</a></li>
-            <li><a href="signin.html">Se connecter</a></li>
-            <li><a href="profile.html" target="_blank" rel="noopener noreferrer">Profil</a></li>
-        </ul>
+      <ul>
+        <li><a href="accueil.html">Accueil</a></li>
+        <li>
+          <a href="play.html" target="_blank" rel="noopener noreferrer"
+            >Jouer</a
+          >
+        </li>
+        <li><a href="inscription.html">S'inscrire</a></li>
+        <li><a href="signin.html">Se connecter</a></li>
+        <li>
+          <a href="profile.html" target="_blank" rel="noopener noreferrer"
+            >Profil</a
+          >
+        </li>
+      </ul>
     </nav>
-    <br>
+    <br />
     <fieldset>
       <h2>Connectez-vous !</h2>
-    <form action="accueil.html" method="get">
-      <ul>
+      <form action="accueil.html" method="get">
+        <ul>
           <li>
-          <label for="mail">Entrez votre email</label>
-          <br>
-          <input
-            type="email"
-            id="mail"
-            name="user_mail"
-            placeholder="janedoe@mail.com"
-            title="Saisissez votre adresse email."
-            required
-          />
-        </li>
-        <li>
-          <label for="password">Mot de passe</label>
-          <br>
-          <input
-            type="password"
-            id="password"
-            name="user_password"
-            pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}"
-            title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
-            required
-          />
-        </li>
-        <li class="choice">
-              <input
-                type="checkbox"
-                id="choice"
-                name="choix"
-                value="choice"
-                checked
-              />
-              <label for="choice">Rester connecté ?</label>
-        </li>
-      </ul>  
-      <br>      
-      <div class="button">
-        <button type="submit">Se connecter</button>
-        <button type="reset">Annuler</button>
-      </div> 
-    </form> 
+            <label for="mail">Entrez votre email</label>
+            <br />
+            <input
+              type="email"
+              id="mail"
+              name="user_mail"
+              placeholder="janedoe@mail.com"
+              title="Saisissez votre adresse email."
+              required
+            />
+          </li>
+          <li>
+            <label for="password">Mot de passe</label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              name="user_password"
+              pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}"
+              title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
+              required
+            />
+          </li>
+          <li class="choice">
+            <input
+              type="checkbox"
+              id="choice"
+              name="choix"
+              value="choice"
+              checked
+            />
+            <label for="choice">Rester connecté ?</label>
+          </li>
+        </ul>
+        <br />
+        <div class="button">
+          <button type="submit">Se connecter</button>
+          <button type="reset">Annuler</button>
+        </div>
+      </form>
     </fieldset>
     <script src="memory.js" defer></script>
-</body>
+  </body>
 </html>

@@ -1,46 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="memory.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="memory.css" />
     <title>Votre profil</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>ENI - Memory</h1>
     <nav class="Menu">
-        <ul>
-            <li><a href="accueil.html">Accueil</a></li>
-            <li><a href="play.html" target="_blank" rel="noopener noreferrer">Jouer</a></li>
-           <li><a href="inscription.html">S'inscrire</a></li>
-            <li><a href="signin.html">Se connecter</a></li>
-            <li><a href="profile.html" target="_blank" rel="noopener noreferrer">Profil</a></li>
-        </ul>
+      <ul>
+        <li><a href="accueil.html">Accueil</a></li>
+        <li>
+          <a href="play.html" target="_blank" rel="noopener noreferrer"
+            >Jouer</a
+          >
+        </li>
+        <li><a href="inscription.html">S'inscrire</a></li>
+        <li><a href="signin.html">Se connecter</a></li>
+        <li>
+          <a href="profile.html" target="_blank" rel="noopener noreferrer"
+            >Profil</a
+          >
+        </li>
+      </ul>
     </nav>
-    <br>
+    <br />
     <h2>Profil</h2>
     <div class="userProfile">
-        <img src="ressources\question.svg" 
-            alt="Point d'interrogation bleu" 
-            class="profileImage"
-            style="height: 5%; width: 5%;">
-        <p class="profileName">Nom d'utilisateur :</p>
-        <p class="profileMail">Adresse mail :</p>
-        <p class=""></p>
-    <br>
-        <label for="memory-select">Choix du memory :</label>
-        <select name="tiles" id="memory-select">
-            <option value="">Veuillez sélectionner une option</option>
-            <option value="animatedPets">Animaux animés</option>
-            <option value="vegetables">Fruits et légumes</option>
-            <option value="animals">Animaux</option>
-            <option value="pets">Dinosaures</option>
-        </select>
-        <br>
-        <br>
-        <button type="submit">Enregistrez les modifications</button>
-
+      <img
+        src="ressources\question.svg"
+        alt="Point d'interrogation bleu"
+        class="profileImage"
+        style="height: 5%; width: 5%"
+      />
+      <p class="profileName">Nom d'utilisateur :</p>
+      <p class="profileMail">Adresse mail :</p>
+      <p class=""></p>
+      <br />
+      <label for="memory-select">Choix du memory :</label>
+      <select name="tiles" id="memory-select">
+        <option value="">Veuillez sélectionner une option</option>
+        <option value="animatedPets">Animaux animés</option>
+        <option value="vegetables">Fruits et légumes</option>
+        <option value="animals">Animaux</option>
+        <option value="pets">Dinosaures</option>
+      </select>
+      <br />
+      <br />
+      <button type="submit">Enregistrez les modifications</button>
     </div>
     <script src="memory.js" defer></script>
-    </body>
+  </body>
 </html>
