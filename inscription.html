@@ -25,10 +25,15 @@
     <!-- Bloc contenant le formulaire d'inscription -->
     <fieldset>
       <h2>Inscrivez-vous !</h2>
-      <form action="/memory.html" method="post">
+      <form
+        action="/memory.html"
+        id="form-inscription"
+        method="post"
+        novalidate
+      >
         <ul>
           <!-- Champ nom d'utilisateur : autofocus place le curseur ici au chargement -->
-          <li>
+          <li class="group">
             <label for="name">Nom d'utilisateur</label>
             <br />
             <input
@@ -37,13 +42,26 @@
               name="user_name"
               autofocus
               required
+              autocomplete="username"
+              aria-describedby="error-name"
               placeholder="exemple : JaneD"
-              pattern="[A-Za-z]{3,}"
-              title="Saisissez votre nom de famille (Minimum de 3 caractères.)"
             />
+            <img
+              class="isOkay"
+              src="/ressources/check.svg"
+              alt="Saisie validée."
+            />
+            <img
+              class="notOkay"
+              src="/ressources/error.svg"
+              alt="Saisie invalide."
+            />
+            <div>
+              <p class="error" id="error-name" aria-live="polite"></p>
+            </div>
           </li>
           <!-- Champ email : le type "email" vérifie le format de l'adresse -->
-          <li>
+          <li class="group">
             <label for="mail">Entrez votre email</label>
             <br />
             <input
@@ -51,50 +69,95 @@
               id="mail"
               name="user_mail"
               placeholder="exemple : janedoe@mail.com"
-              title="Saisissez votre adresse email."
               required
+              autocomplete="email"
+              aria-describedby="error-mail"
             />
+            <img
+              class="isOkay"
+              src="/ressources/check.svg"
+              alt="Saisie validée."
+            />
+            <img
+              class="notOkay"
+              src="/ressources/error.svg"
+              alt="Saisie invalide."
+            />
+            <div>
+              <p class="error" id="error-mail" aria-live="polite"></p>
+            </div>
           </li>
           <!-- Champ mot de passe : le pattern vérifie les règles de saisie -->
-          <li>
+          <li class="group">
             <label for="password">Mot de passe</label>
             <br />
             <input
               type="password"
               id="password"
               name="user_password"
-              pattern="((?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,})"
-              title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
               required
+              autocomplete="new-password"
+              aria-describedby="error-password"
             />
+            <img
+              class="isOkay"
+              src="/ressources/check.svg"
+              alt="Saisie validée."
+            />
+            <img
+              class="notOkay"
+              src="/ressources/error.svg"
+              alt="Saisie invalide."
+            />
+            <div>
+              <p class="error" id="error-password" aria-live="polite"></p>
+            </div>
             <!-- Rappel des règles du mot de passe -->
-            <p class="passRule">
+            <p class="passRule" id="passRule">
               Minimum 6 caractères, 1 chiffre, 1 lettre, 1 symbole
             </p>
           </li>
           <br />
           <!-- Confirmation du mot de passe par l'utilisateur-->
-          <li>
+          <li class="group">
             <label for="password-confirm">Confirmer le mot de passe</label>
             <br />
             <input
               type="password"
               id="password-confirm"
               name="user-password-confirm"
-              pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}"
               required
+              autocomplete="new-password"
+              aria-describedby="error-password-confirm"
             />
+            <img
+              class="isOkay"
+              src="/ressources/check.svg"
+              alt="Saisie validée."
+            />
+            <img
+              class="notOkay"
+              src="/ressources/error.svg"
+              alt="Saisie invalide."
+            />
+            <div>
+              <p
+                class="error"
+                id="error-password-confirm"
+                aria-live="polite"
+              ></p>
+            </div>
           </li>
         </ul>
         <!-- Boutons : créer le compte ou réinitialiser le formulaire -->
         <div class="button">
-          <button type="submit">Création du compte</button>
+          <button type="submit" id="btnOkay">Création du compte</button>
           <button type="reset">Annuler</button>
         </div>
       </form>
     </fieldset>
 
-    <!-- Ajout du script JS du jeu avec defer -->
+    <!-- Ajout du script JS pour l'inscription avec defer -->
     <script src="inscription.js" defer></script>
   </body>
 </html>
