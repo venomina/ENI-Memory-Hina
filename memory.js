@@ -32,6 +32,45 @@ const tiles = document.querySelectorAll("td");
 
 tiles.forEach((oneTile, index) => {
   oneTile.addEventListener("click", () => {
-    console.log("clickedTile :", index);
+    console.log("oneTile :", index);
+    const img = oneTile.querySelector("img");
+    img.src = tabFaces[index];
+  });
+});
+
+let firstIndex = null;
+let locked = false;
+
+mixGrid(tabFaces);
+
+tiles.forEach((oneTile, index) => {
+  oneTile.addEventListener("click", () => {
+    if (locked || index === firstIndex || oneTile.classList.contains("found")) {
+      return;
+    }
+
+    const img = oneTile.querySelector("img");
+    img.src = tabFaces[index];
+
+    if (firstIndex === null) {
+      firstIndex = index;
+      return;
+    }
+
+    const firstTile = tiles[firstIndex];
+
+    if (tabFaces[firstIndex] === tabFaces[index]) {
+      firstTile.classList.add("found");
+      oneTile.classList.add("found");
+      firstIndex = null;
+    } else {
+      locked = true;
+      setTimeout(() => {
+        firstTile.querySelector("img").src = tilesBack;
+        img.src = tilesBack;
+        firstIndex = null;
+        locked = false;
+      }, 3000);
+    }
   });
 });
