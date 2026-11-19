@@ -427,3 +427,60 @@ td img.flipping {
 .userProfile button:hover {
   background-color: #eeaeca;
 }
+
+.passStrength {
+  margin-top: 0.5rem;
+}
+
+.passStrength[data-level=""] {
+  display: none;
+}
+
+.strengthBar {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #555555;
+  overflow: hidden;
+}
+
+.strengthBar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 4px;
+  transition:
+    width 0.3s,
+    background-color 0.3s;
+}
+
+.strengthText {
+  font-size: 1rem;
+  margin: 0.25rem 0 0;
+}
+
+.passStrength[data-level="faible"] .strengthBar span {
+  width: 25%;
+  background-color: crimson;
+}
+
+.passStrength[data-level="faible"] .strengthText {
+  color: #ff6b81;
+}
+
+.passStrength[data-level="moyen"] .strengthBar span {
+  width: 50%;
+  background-color: orange;
+}
+
+.passStrength[data-level="moyen"] .strengthText {
+  color: orange;
+}
+
+.passStrength[data-level="fort"] .strengthBar span {
+  width: 100%;
+  background-color: limegreen;
+}
+
+.passStrength[data-level="fort"] .strengthText {
+  color: limegreen;
+}

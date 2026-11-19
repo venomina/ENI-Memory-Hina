@@ -114,6 +114,10 @@
             <p class="passRule" id="passRule">
               Au moins un symbole, un chiffre, ainsi que 6 caractères minimum.
             </p>
+            <div class="passStrength" id="passStrength" data-level="">
+              <div class="strengthBar"><span></span></div>
+              <p class="strengthText" id="strength-text" aria-live="polite"></p>
+            </div>
             <div>
               <p class="error" id="error-password" aria-live="polite"></p>
             </div>
@@ -158,5 +162,6 @@
         </div>
       </form>
     </fieldset>
+    <script src="/inscription.js" defer></script>
   </body>
 </html>
