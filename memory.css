@@ -224,6 +224,38 @@ fieldset.memory-game td img {
   aspect-ratio: 1/1;
 }
 
+fieldset.signin {
+  background-color: #222222;
+}
+
+fieldset.signin .button {
+  justify-content: space-between;
+  max-width: 520px;
+  margin-top: 2rem;
+}
+
+fieldset.signin button {
+  background-color: #fffbd5;
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding: 10px 28px;
+}
+
+fieldset.signin button:hover {
+  background-color: #eeaeca;
+}
+
+fieldset.signin input::placeholder {
+  font-size: 1rem;
+  color: #888888;
+}
+
+fieldset.signin input:-webkit-autofill,
+fieldset.signin input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #222222 inset;
+  box-shadow: 0 0 0 1000px #222222 inset;
+}
+
 @media (max-width: 700px) {
   fieldset {
     padding: 1.2rem;
@@ -260,6 +292,11 @@ input[type="password"] {
   font-size: 1.2rem;
   outline: none;
   box-sizing: border-box;
+  color-scheme: dark;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: white;
 }
 
 /* La ligne devient bleue quand le champ est actif */
@@ -322,7 +359,7 @@ td img.flipping {
 .group {
   position: relative;
   list-style: none;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .group br {
@@ -378,8 +415,8 @@ td img.flipping {
 }
 
 .group input:focus-visible {
-  outline: 3px solid #4d90fe;
-  outline-offset: 2px;
+  outline: 2px solid #4d90fe;
+  outline-offset: 4px;
 }
 
 .userProfile {
@@ -426,6 +463,14 @@ td img.flipping {
 
 .userProfile button:hover {
   background-color: #eeaeca;
+}
+
+.passRule {
+  margin-bottom: 0;
+}
+
+#password-confirm {
+  margin-top: 0;
 }
 
 .passStrength {

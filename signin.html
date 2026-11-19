@@ -23,32 +23,33 @@
     <br />
 
     <!-- Bloc contenant le formulaire de connexion -->
-    <fieldset>
+    <fieldset class="signin">
       <h2>Connectez-vous !</h2>
       <form action="accueil.html" method="get">
         <ul>
           <!-- Champ email : le type "email" vérifie le format de l'adresse -->
-          <li>
+          <li class="group">
             <label for="mail">Entrez votre email</label>
             <br />
             <input
               type="email"
               id="mail"
               name="user_mail"
-              placeholder="janedoe@mail.com"
+              placeholder="Votre email"
               title="Saisissez votre adresse email."
               required
             />
           </li>
           <!-- Champ mot de passe : le pattern impose 6 caractères minimum,
                avec au moins 1 chiffre, 1 lettre et 1 symbole -->
-          <li>
+          <li class="group">
             <label for="password">Mot de passe</label>
             <br />
             <input
               type="password"
               id="password"
               name="user_password"
+              placeholder="Votre mot de passe"
               pattern="((?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,})"
               title="Saisissez un mot de passe comprenant : minimum 6 caractères, au moins 1 chiffre, au moins 1 lettre, au moins 1 symbole"
               required
