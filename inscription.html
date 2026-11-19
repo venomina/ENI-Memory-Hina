@@ -96,6 +96,7 @@
               id="password"
               name="user_password"
               required
+              placeholder="Votre mot de passe"
               autocomplete="new-password"
               aria-describedby="error-password"
             />
@@ -111,7 +112,7 @@
             />
             <!-- Rappel des règles du mot de passe -->
             <p class="passRule" id="passRule">
-              Minimum 6 caractères, 1 chiffre, 1 lettre, 1 symbole
+              Au moins un symbole, un chiffre, ainsi que 6 caractères minimum.
             </p>
             <div>
               <p class="error" id="error-password" aria-live="polite"></p>
@@ -127,6 +128,7 @@
               id="password-confirm"
               name="user-password-confirm"
               required
+              placeholder="Confirmez le mot de passe"
               autocomplete="new-password"
               aria-describedby="error-password-confirm"
             />

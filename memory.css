@@ -1,6 +1,10 @@
 /*ENI - Memory : feuille de style commune à toutes les pages*/
+html {
+  min-height: 100%;
+}
 
 body {
+  font-size: 1.5rem;
   /* Couleur de secours si le dégradé n'est pas supporté */
   background: #94bbe9;
   /* Dégradé horizontal bleu → rose → vert */
@@ -10,10 +14,9 @@ body {
     rgba(238, 174, 202, 1) 50%,
     rgba(160, 242, 160, 1) 100%
   );
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin: 0;
-  padding: 0;
   min-height: 100vh;
 }
 
@@ -60,6 +63,7 @@ nav ul li {
 }
 
 nav ul li a {
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,21 +97,23 @@ nav ul li:last-child a {
 li,
 label {
   color: white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1.5rem;
 }
 
 p {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   color: white;
   line-height: 1.5;
   text-align: left;
+  font-size: 1.5rem;
 }
 
 /* Rappel des règles du mot de passe (inscription) */
 p.passRule {
   font-weight: lighter;
   color: #bbbbbb;
-  font-size: small;
+  font-size: 1rem;
   line-height: 1;
   margin: 0.4rem 0 0;
 }
@@ -127,7 +133,7 @@ p.gameOn {
 
 h2 {
   color: white;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 /* ---------- Blocs (fieldset) ---------- */
@@ -135,7 +141,7 @@ h2 {
 fieldset {
   background-color: #333333;
   width: 90%;
-  max-width: 560px;
+  max-width: 640px;
   margin: 10vh auto;
   padding: 2rem;
   box-sizing: border-box;
@@ -170,24 +176,29 @@ fieldset ul.gameRules {
 
 /* Blocs plus larges pour l'accueil et le jeu */
 fieldset.accueilMemory,
-fieldset.memory-game {
-  width: 95%;
-  max-width: 900px;
+.memory-game {
+  width: 90%;
+  max-width: 1100px;
   margin: 5vh auto;
+  padding: 1.5rem;
 }
 
 /* ---------- Plateau de jeu ---------- */
 fieldset.memory-game p {
   text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 fieldset.memory-game table {
   width: 100%;
+  max-width: 1000px;
   /* Colonnes de largeur égale */
   table-layout: fixed;
   /* Espace de 12px entre les cartes */
   border-collapse: separate;
-  border-spacing: 12px;
+  border-spacing: 10px;
   margin: 0 auto;
 }
 
@@ -213,12 +224,22 @@ fieldset.memory-game td img {
   aspect-ratio: 1/1;
 }
 
+@media (max-width: 700px) {
+  fieldset {
+    padding: 1rem;
+  }
+
+  fieldset.memory-game table {
+    border-spacing: 6px;
+  }
+}
+
 /* Image d'illustration de la page d'accueil */
 img.exemple-memory {
   display: block;
   height: auto;
   width: 100%;
-  max-width: 480px;
+  max-width: 750px;
   margin: 1.5rem auto;
 }
 
@@ -236,7 +257,7 @@ input[type="password"] {
   border-bottom: 2px solid #bbbbbb;
   border-radius: 0;
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
   outline: none;
   box-sizing: border-box;
 }
@@ -267,7 +288,7 @@ input[type="checkbox"] {
 /* ---------- Boutons ---------- */
 button {
   padding: 10px 20px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   border: none;
   border-radius: 8px;
   background-color: #d8d7d7;
@@ -282,6 +303,7 @@ button:hover {
 
 /* Conteneur des boutons : centrés côte à côte */
 .button {
+  font-size: 1.1rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -350,7 +372,7 @@ td img.flipping {
 
 .error {
   color: crimson;
-  font-size: 0.85rem;
+  font-size: 1rem;
   margin: 0.25rem 0 0;
   min-height: 1.1rem;
 }
@@ -392,7 +414,7 @@ td img.flipping {
   border-radius: 4px;
   background-color: #d8d7d7;
   color: #333333;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
