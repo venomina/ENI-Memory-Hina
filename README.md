@@ -8,7 +8,7 @@ Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le m
 
 **Fonctionnalités actuellement présentes :**
 
-** Jeu (`play.html` et `memory.js`)**
+## Jeu (`play.html` et `memory.js`)
 
 - Plateau de 12 tuiles (6 paires), mélangées aléatoirement à chaque partie
 - Compteur de coups joués et message de victoire
@@ -17,7 +17,7 @@ Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le m
 - Formulaires d'inscription et de connexion (validation HTML)
 - Affichage adapté aux écrans mobiles (responsive)
 
-** Inscription (`inscription.html` et `inscription.js`)**
+## Inscription (`inscription.html` et `inscription.js`)
 
 - Formulaire avec champs nom d'utilisateur, adresse e-mail, mot de passe et confirmation du mot de passe.
 - Indication visuelle de la force du mot de passe (faible, moyen ou fort).
