@@ -35,21 +35,6 @@ function updateAttempts() {
   attemptsDisplay.textContent = "Nombre de coups : " + nbAttempts;
 }
 
-function gameReset() {
-  tiles.forEach((tile) => {
-    tile.classList.remove("found");
-    tile.querySelector("img").src = tilesBack;
-  });
-  firstIndex = null;
-  locked = false;
-  nbAttempts = 0;
-  nbFound = 0;
-  gameOver = false;
-  finalMessage.textContent = "";
-  updateAttempts();
-  mixGrid(tabFaces);
-}
-
 function cardFlip(img, newImg) {
   img.classList.add("flipping");
   setTimeout(() => {
@@ -99,6 +84,21 @@ tiles.forEach((oneTile, index) => {
     }
   });
 });
+
+function gameReset() {
+  tiles.forEach((tile) => {
+    tile.classList.remove("found");
+    tile.querySelector("img").src = tilesBack;
+  });
+  firstIndex = null;
+  locked = false;
+  nbAttempts = 0;
+  nbFound = 0;
+  gameOver = false;
+  finalMessage.textContent = "";
+  updateAttempts();
+  mixGrid(tabFaces);
+}
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space" && gameOver) {
