@@ -6,7 +6,9 @@ Site web d'un jeu de Memory réalisé dans le cadre de ma formation à l'ENI, en
 
 Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le moins de coups possible. À terme, il pourra gérer son profil : changer sa photo, son pseudo et son adresse mail, ainsi que le thème et le nombre de tuiles du Memory.
 
-**Fonctionnalités :**
+**Fonctionnalités actuellement présentes :**
+
+** Jeu (`play.html` et `memory.js`)**
 
 - Plateau de 12 tuiles (6 paires), mélangées aléatoirement à chaque partie
 - Compteur de coups joués et message de victoire
@@ -14,6 +16,17 @@ Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le m
 - Rejouer en appuyant sur la barre espace une fois la partie terminée
 - Formulaires d'inscription et de connexion (validation HTML)
 - Affichage adapté aux écrans mobiles (responsive)
+
+** Inscription (`inscription.html` et `inscription.js`)**
+
+- Formulaire avec champs nom d'utilisateur, adresse e-mail, mot de passe et confirmation du mot de passe.
+- Indication visuelle de la force du mot de passe (faible, moyen ou fort).
+- Réinitialisation de l'indicateur de force lorsque le formulaire est réinitialisé.
+
+**À noter :** le script actuel calcule uniquement un indicateur de force.
+Il ne valide pas encore les champs, ne vérifie pas la confirmation du mot
+de passe et ne crée pas de compte. De plus, l'attribut `novalidate` du
+formulaire désactive la validation native du navigateur.
 
 ![Aperçu du jeu](ressources/screenshot-ecran-jeu.png)
 
@@ -50,14 +63,24 @@ Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js)
 4. La partie se termine quand toutes les paires sont trouvées.
 5. Appuyez sur la barre espace pour relancer une partie.
 
-### Fonctions principales (`memory.js`)
+### Fonctions principales
 
-| Fonction                | Rôle                                            | Retourne                  |
-| ----------------------- | ----------------------------------------------- | ------------------------- |
-| `mixGrid(tabFaces)`     | Mélange les images du tableau                   | Rien (modifie le tableau) |
-| `updateAttempts()`      | Met à jour l'affichage du nombre de coups       | Rien                      |
-| `gameReset()`           | Remet le jeu à zéro et remélange les tuiles     | Rien                      |
-| `cardFlip(img, newImg)` | Retourne une tuile avec une animation de 200 ms | Rien                      |
+### Fonctions (`memory.js`)
+
+| Fonction                | Rôle                                                        | Retourne                  |
+| ----------------------- | ----------------------------------------------------------- | ------------------------- |
+| `mixGrid(tabFaces)`     | Mélange les images du tableau                               | Rien (modifie le tableau) |
+| `updateAttempts()`      | Met à jour l'affichage du nombre de coups                   | Rien                      |
+| `gameReset()`           | Remet le jeu à zéro et remélange les tuiles                 | Rien                      |
+| `cardFlip(img, newImg)` | Retourne une tuile avec une animation de 200 ms             | Rien                      |
+| Écouteur `keydown`      | Relance une partie avec la barre espace après une victoire. | Rien                      |
+
+| Fonction / élément   | Rôle                                                                                   | Retour                                          |
+| -------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `getStrength(value)` | Estime la force du mot de passe à partir de sa longueur, d'un chiffre et d'un symbole. | Une chaîne : `"faible"`, `"moyen"` ou `"fort"`. |
+| `updateStrength()`   | Met à jour le niveau et le texte affichés sous le champ mot de passe.                  | Rien                                            |
+| Écouteur `input`     | Recalcule l'indicateur pendant la saisie en appelant `updateStrength()`.               | Rien                                            |
+| Écouteur `reset`     | Efface l'indicateur lors de la réinitialisation du formulaire.                         | Rien                                            |
 
 ### Pages du site
 
@@ -107,6 +130,28 @@ ENI-Memory-Hina/
 | ----------------------------------------------------------------- | -------- |
 | Le formulaire d'inscription ne valide pas encore les champs en JS | En cours |
 | La connexion et le profil sont des maquettes                      | Prévu    |
+
+## Accessibilité et audits Lighthouse
+
+Des audits Lighthouse ont été réalisés sur les versions ordinateur et mobile
+du site. Les deux captures présentent les mêmes résultats :
+
+| Indicateur       | Ordinateur |  Mobile |
+| ---------------- | ---------: | ------: |
+| Performance      |    100/100 | 100/100 |
+| Accessibilité    |     98/100 |  98/100 |
+| Bonnes pratiques |     96/100 |  96/100 |
+| SEO              |     90/100 |  90/100 |
+
+Attention, un audit Lighthouse automatisé ne garantit pas à lui seul une accessibilité complète.
+
+### Résultats sur ordinateur
+
+![Résultats Lighthouse sur ordinateur](docs/Lighthouse-Desktop.png)
+
+### Résultats sur mobile
+
+![Résultats Lighthouse sur mobile](docs/Lighthouse-Mobile.png)
 
 ## FAQ
 

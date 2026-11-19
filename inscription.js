@@ -20,7 +20,7 @@ function getStrength(value) {
     return "fort";
   }
 
-  if (hasNumber || hasSymbol) {
+  if ((value.length > 6 && hasNumber) || hasSymbol) {
     return "moyen";
   }
   return "faible";

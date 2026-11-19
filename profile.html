@@ -30,6 +30,10 @@
           alt="Avatar de l'utilisateur"
           class="profileImage"
         />
+        <form 
+        action="/memory.html"
+        id="form-inscription"
+        method="post">
         <!-- Nom et adresse mail de l'utilisateur -->
         <div class="field">
           <label for="username">Nom d'utilisateur</label>
@@ -58,13 +62,15 @@
           <label for="size-selection">Taille du memory</label>
           <select name="size" id="size-selection">
             <option value="4x3">4 * 3</option>
-            <option value="4x3">4 * 4</option>
-            <option value="4x3">6 * 3</option>
+            <option value="4x4">4 * 4</option>
+            <option value="6x3">6 * 3</option>
           </select>
         </div>
         <!-- Bouton d'enregistrement -->
         <button type="submit">Enregistrez les modifications</button>
-      </div>
+         </div>
+      </form>  
     </fieldset>
+  
   </body>
 </html>
