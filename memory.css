@@ -318,9 +318,10 @@ td img.flipping {
   box-sizing: border-box;
   width: 100%;
   height: 2.5rem;
-  padding-inline: 0 2.75rem 0 0.75rem;
-  border: 2px;
-  border-radius: 4px;
+  padding-inline: 0 2.75rem;
+  border: none;
+  border-bottom: 2px solid #bbbbbb;
+  border-radius: 0;
 }
 
 .isOkay,
@@ -334,14 +335,14 @@ td img.flipping {
 }
 
 .group.valide input {
-  border-color: limegreen;
+  border-bottom-color: limegreen;
 }
 .group.valide .isOkay {
   display: block;
 }
 
 .group.invalide input {
-  border-color: crimson;
+  border-bottom-color: crimson;
 }
 .group.invalide .notOkay {
   display: block;
@@ -354,12 +355,53 @@ td img.flipping {
   min-height: 1.1rem;
 }
 
-.passRule {
-  font-size: 0.8rem;
-  margin: 0.25rem 0 0;
-}
-
 .group input:focus-visible {
   outline: 3px solid #4d90fe;
   outline-offset: 2px;
+}
+
+.userProfile {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.profileImage {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  padding: 4px;
+  border: 1px solid #bbbbbb;
+  border-radius: 50%;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+
+.userProfile .field {
+  margin-bottom: 1.5rem;
+}
+
+.userProfile .field label {
+  display: block;
+}
+
+.userProfile select {
+  margin-top: 6px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #d8d7d7;
+  color: #333333;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.userProfile button {
+  display: block;
+  margin: 2rem auto 0;
+  background-color: #fffbd5;
+}
+
+.userProfile button:hover {
+  background-color: #eeaeca;
 }

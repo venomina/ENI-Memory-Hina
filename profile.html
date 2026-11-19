@@ -27,28 +27,41 @@
         <!-- Avatar de l'utilisateur (taille fixée en ligne par le style) -->
         <img
           src="ressources\question.svg"
-          alt="Point d'interrogation bleu"
+          alt="Avatar de l'utilisateur"
           class="profileImage"
-          style="height: 5%; width: 5%"
         />
         <!-- Nom et adresse mail de l'utilisateur -->
-        <p class="profileName">Nom d'utilisateur :</p>
-        <p class="profileMail">Adresse mail :</p>
-        <p class=""></p>
-        <br />
+        <div class="field">
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" id="username" name="user-name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Adresse mail</label>
+          <input type="email" id="email" name="user-mail" />
+        </div>
 
         <!-- Le "for" correspond à l'id du select : cliquer sur le texte l'active -->
-        <label for="memory-select">Choix du memory :</label>
-        <!-- Liste déroulante pour choisir le thème du memory -->
-        <select name="tiles" id="memory-select">
-          <option value="">Veuillez sélectionner une option</option>
-          <option value="animatedPets">Animaux animés</option>
-          <option value="vegetables">Fruits et légumes</option>
-          <option value="animals">Animaux</option>
-          <option value="pets">Dinosaures</option>
-        </select>
-        <br />
-        <br />
+        <div class="field">
+          <label for="memory-select">Choix du memory :</label>
+          <!-- Liste déroulante pour choisir le thème du memory -->
+          <select name="tiles" id="memory-select">
+            <option value="">Veuillez sélectionner une option</option>
+            <option value="animatedPets">Animaux animés</option>
+            <option value="vegetables">Fruits et légumes</option>
+            <option value="animals">Animaux</option>
+            <option value="pets">Dinosaures</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="size-selection">Taille du memory</label>
+          <select name="size" id="size-selection">
+            <option value="4x3">4 * 3</option>
+            <option value="4x3">4 * 4</option>
+            <option value="4x3">6 * 3</option>
+          </select>
+        </div>
         <!-- Bouton d'enregistrement -->
         <button type="submit">Enregistrez les modifications</button>
       </div>
