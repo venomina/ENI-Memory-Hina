@@ -1,4 +1,21 @@
-/*ENI - Memory : feuille de style commune à toutes les pages*/
+/* ==========================================================================
+   ENI - Memory : feuille de style commune à toutes les pages
+
+   SOMMAIRE
+   1. Base (html, body)
+   2. Typographie
+   3. Navigation
+   4. Blocs (fieldset)
+   5. Formulaires (champs, boutons)
+   6. Validation des champs (inscription)
+   7. Pages : accueil, jeu, connexion, profil
+   8. Force du mot de passe
+   9. Responsive (mobile)
+   ========================================================================== */
+
+/* ==========================================================================
+   1. BASE
+   ========================================================================== */
 html {
   min-height: 100%;
 }
@@ -20,7 +37,9 @@ body {
   min-height: 100vh;
 }
 
-/* ---------- Titre principal ---------- */
+/* ==========================================================================
+   2. TYPOGRAPHIE
+   ========================================================================== */
 h1 {
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -31,14 +50,29 @@ h1 {
   letter-spacing: 0.5rem;
 }
 
-/* Titre plus petit sur mobile */
-@media (max-width: 700px) {
-  h1 {
-    font-size: 48px;
-  }
+h2 {
+  color: white;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* ---------- Barre de navigation ---------- */
+li,
+label {
+  color: white;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1.5rem;
+}
+
+p {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: white;
+  line-height: 1.5;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+/* ==========================================================================
+   3. NAVIGATION
+   ========================================================================== */
 nav {
   display: flex;
   justify-content: center;
@@ -76,14 +110,6 @@ nav ul li a {
   white-space: nowrap;
 }
 
-/* Liens plus compacts sur mobile */
-@media (max-width: 700px) {
-  nav ul li a {
-    padding: 12px 4px;
-    font-size: 0.8rem;
-  }
-}
-
 nav ul li a:hover {
   background-color: #111111;
 }
@@ -93,50 +119,9 @@ nav ul li:last-child a {
   border-right: none;
 }
 
-/* ---------- Textes ---------- */
-li,
-label {
-  color: white;
-  font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 1.5rem;
-}
-
-p {
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: white;
-  line-height: 1.5;
-  text-align: left;
-  font-size: 1.5rem;
-}
-
-/* Rappel des règles du mot de passe (inscription) */
-p.passRule {
-  font-weight: lighter;
-  color: #bbbbbb;
-  font-size: 1.1rem;
-  line-height: 1.3;
-  margin: 0.4rem 0 0;
-}
-
-/* Compteur de coups (page de jeu) */
-p.nbAttempts {
-  font-size: x-large;
-}
-
-p.finalMessage {
-  font-size: xx-large;
-}
-
-p.gameOn {
-  font-size: larger;
-}
-
-h2 {
-  color: white;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
-
-/* ---------- Blocs (fieldset) ---------- */
+/* ==========================================================================
+   4. BLOCS (FIELDSET)
+   ========================================================================== */
 /* Bloc centré utilisé pour les formulaires */
 fieldset {
   background-color: #333333;
@@ -153,7 +138,7 @@ fieldset h2 {
   text-align: center;
 }
 
-/* Listes dans les blocs : sans puces, centrées et limitées à 400px */
+/* Listes dans les blocs : sans puces, centrées et limitées à 520px */
 fieldset ul {
   list-style: none;
   padding: 0;
@@ -183,100 +168,10 @@ fieldset.accueilMemory,
   padding: 1.5rem;
 }
 
-/* ---------- Plateau de jeu ---------- */
-fieldset.memory-game p {
-  text-align: center;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-fieldset.memory-game table {
-  width: 100%;
-  max-width: 1000px;
-  /* Colonnes de largeur égale */
-  table-layout: fixed;
-  /* Espace de 12px entre les cartes */
-  border-collapse: separate;
-  border-spacing: 10px;
-  margin: 0 auto;
-}
-
-/* Une case = une carte */
-fieldset.memory-game td {
-  padding: 0;
-  border: 1px solid white;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: aliceblue;
-  text-align: center;
-  cursor: pointer;
-}
-
-fieldset.memory-game td:hover {
-  border: 1px solid black;
-}
-
-/* Image carrée qui remplit toute la carte */
-fieldset.memory-game td img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1/1;
-}
-
-fieldset.signin {
-  background-color: #222222;
-}
-
-fieldset.signin .button {
-  justify-content: space-between;
-  max-width: 520px;
-  margin-top: 2rem;
-}
-
-fieldset.signin button {
-  background-color: #fffbd5;
-  font-size: 1.2rem;
-  font-weight: normal;
-  padding: 10px 28px;
-}
-
-fieldset.signin button:hover {
-  background-color: #eeaeca;
-}
-
-fieldset.signin input::placeholder {
-  font-size: 1rem;
-  color: #888888;
-}
-
-fieldset.signin input:-webkit-autofill,
-fieldset.signin input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px #222222 inset;
-  box-shadow: 0 0 0 1000px #222222 inset;
-}
-
-@media (max-width: 700px) {
-  fieldset {
-    padding: 1.2rem;
-  }
-
-  fieldset.memory-game table {
-    border-spacing: 6px;
-  }
-}
-
-/* Image d'illustration de la page d'accueil */
-img.exemple-memory {
-  display: block;
-  height: auto;
-  width: 100%;
-  max-width: 750px;
-  margin: 1.5rem auto;
-}
-
-/* ---------- Formulaires ---------- */
-/* Champs de saisie : simple ligne en bas, fond transparent */
+/* ==========================================================================
+   5. FORMULAIRES
+   ========================================================================== */
+/* ---------- Champs de saisie : simple ligne en bas, fond transparent ---------- */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -295,10 +190,6 @@ input[type="password"] {
   color-scheme: dark;
 }
 
-input:-webkit-autofill {
-  -webkit-text-fill-color: white;
-}
-
 /* La ligne devient bleue quand le champ est actif */
 input[type="text"]:focus,
 input[type="email"]:focus,
@@ -310,7 +201,12 @@ input::placeholder {
   color: #999999;
 }
 
-/* Case à cocher "Rester connecté" : case et texte alignés */
+/* Texte blanc pour le remplissage automatique de Chrome */
+input:-webkit-autofill {
+  -webkit-text-fill-color: white;
+}
+
+/* ---------- Case à cocher "Rester connecté" ---------- */
 li.choice {
   display: flex;
   align-items: center;
@@ -348,14 +244,10 @@ button:hover {
   margin: 1.5rem auto 0;
 }
 
-td img {
-  transition: transform 0.2s;
-}
-
-td img.flipping {
-  transform: scale(0);
-}
-
+/* ==========================================================================
+   6. VALIDATION DES CHAMPS (inscription)
+   ========================================================================== */
+/* Un groupe = label + champ + icône + message d'erreur */
 .group {
   position: relative;
   list-style: none;
@@ -383,6 +275,12 @@ td img.flipping {
   border-radius: 0;
 }
 
+.group input:focus-visible {
+  outline: 2px solid #4d90fe;
+  outline-offset: 4px;
+}
+
+/* Icônes de validation */
 .isOkay,
 .notOkay {
   display: none;
@@ -393,6 +291,7 @@ td img.flipping {
   height: 1.5rem;
 }
 
+/* État valide */
 .group.valide input {
   border-bottom-color: limegreen;
 }
@@ -400,6 +299,7 @@ td img.flipping {
   display: block;
 }
 
+/* État invalide */
 .group.invalide input {
   border-bottom-color: crimson;
 }
@@ -407,6 +307,7 @@ td img.flipping {
   display: block;
 }
 
+/* Messages d'erreur */
 .error {
   color: crimson;
   font-size: 1.1rem;
@@ -414,11 +315,134 @@ td img.flipping {
   min-height: 0;
 }
 
-.group input:focus-visible {
-  outline: 2px solid #4d90fe;
-  outline-offset: 4px;
+/* Rappel des règles du mot de passe */
+p.passRule {
+  font-weight: lighter;
+  color: #bbbbbb;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  margin: 0.4rem 0 0;
 }
 
+.passRule {
+  margin-bottom: 0;
+}
+
+#password-confirm {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   7. PAGES
+   ========================================================================== */
+/* ---------- Accueil ---------- */
+img.exemple-memory {
+  display: block;
+  height: auto;
+  width: 100%;
+  max-width: 750px;
+  margin: 1.5rem auto;
+}
+
+/* ---------- Jeu : textes ---------- */
+p.nbAttempts {
+  font-size: x-large;
+}
+
+p.finalMessage {
+  font-size: xx-large;
+}
+
+p.gameOn {
+  font-size: larger;
+}
+
+fieldset.memory-game p {
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Jeu : plateau ---------- */
+fieldset.memory-game table {
+  width: 100%;
+  max-width: 1000px;
+  /* Colonnes de largeur égale */
+  table-layout: fixed;
+  /* Espace de 10px entre les tuiles */
+  border-collapse: separate;
+  border-spacing: 10px;
+  margin: 0 auto;
+}
+
+/* Une case = une tuile */
+fieldset.memory-game td {
+  padding: 0;
+  border: 1px solid white;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: aliceblue;
+  text-align: center;
+  cursor: pointer;
+}
+
+fieldset.memory-game td:hover {
+  border: 1px solid black;
+}
+
+/* Image carrée qui remplit toute la tuile */
+fieldset.memory-game td img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+/* Animation de retournement (classe ajoutée par memory.js) */
+td img {
+  transition: transform 0.2s;
+}
+
+td img.flipping {
+  transform: scale(0);
+}
+
+/* ---------- Connexion ---------- */
+fieldset.signin {
+  background-color: #222222;
+}
+
+/* Boutons crème, un à chaque bord */
+fieldset.signin .button {
+  justify-content: space-between;
+  max-width: 520px;
+  margin-top: 2rem;
+}
+
+fieldset.signin button {
+  background-color: #fffbd5;
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding: 10px 28px;
+}
+
+fieldset.signin button:hover {
+  background-color: #eeaeca;
+}
+
+fieldset.signin input::placeholder {
+  font-size: 1rem;
+  color: #888888;
+}
+
+/* Remplissage automatique assorti au fond du bloc */
+fieldset.signin input:-webkit-autofill,
+fieldset.signin input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #222222 inset;
+  box-shadow: 0 0 0 1000px #222222 inset;
+}
+
+/* ---------- Profil ---------- */
 .userProfile {
   max-width: 400px;
   margin: 0 auto;
@@ -465,18 +489,14 @@ td img.flipping {
   background-color: #eeaeca;
 }
 
-.passRule {
-  margin-bottom: 0;
-}
-
-#password-confirm {
-  margin-top: 0;
-}
-
+/* ==========================================================================
+   8. FORCE DU MOT DE PASSE
+   ========================================================================== */
 .passStrength {
   margin-top: 0.5rem;
 }
 
+/* Caché tant que rien n'est saisi */
 .passStrength[data-level=""] {
   display: none;
 }
@@ -503,6 +523,7 @@ td img.flipping {
   margin: 0.25rem 0 0;
 }
 
+/* Faible */
 .passStrength[data-level="faible"] .strengthBar span {
   width: 25%;
   background-color: crimson;
@@ -512,6 +533,7 @@ td img.flipping {
   color: #ff6b81;
 }
 
+/* Moyen */
 .passStrength[data-level="moyen"] .strengthBar span {
   width: 50%;
   background-color: orange;
@@ -521,6 +543,7 @@ td img.flipping {
   color: orange;
 }
 
+/* Fort */
 .passStrength[data-level="fort"] .strengthBar span {
   width: 100%;
   background-color: limegreen;
@@ -528,4 +551,28 @@ td img.flipping {
 
 .passStrength[data-level="fort"] .strengthText {
   color: limegreen;
+}
+
+/* ==========================================================================
+   9. RESPONSIVE (écrans de 700px et moins)
+   Toujours en fin de fichier : ces règles doivent passer après les règles
+   de base pour les écraser.
+   ========================================================================== */
+@media (max-width: 700px) {
+  h1 {
+    font-size: 48px;
+  }
+
+  nav ul li a {
+    padding: 12px 4px;
+    font-size: 0.8rem;
+  }
+
+  fieldset {
+    padding: 1.2rem;
+  }
+
+  fieldset.memory-game table {
+    border-spacing: 6px;
+  }
 }
