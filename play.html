@@ -32,14 +32,15 @@
       </p>
       <br />
       <!-- Message de victoire (rempli par memory.js) -->
-      <p class="finalMessage"></p>
+      <p class="finalMessage" aria-live="polite"></p>
       <!-- Compteur de coups (mis à jour par memory.js) -->
-      <p class="nbAttempts">Nombre de coups : 0</p>
+      <p class="nbAttempts" aria-live="polite">Nombre de coups : 0</p>
 
       <!-- Plateau de jeu : 12 tuiles réparties sur 3 lignes de 4 colonnes.
-           memory.js récupère les cases <td> dans l'ordre (index 0 à 11) pour
-           les retourner : les id tile0 à tile11 ne sont pas utilisés par le
-           script. Toutes affichent le dos de tuile au départ. -->
+     Chaque tuile est un <button> (accessible au clavier) placé dans une
+     case <td>. memory.js lit les <td> dans l'ordre (index 0 à 11) ; les
+     id tile0 à tile11 ne sont pas utilisés par le script.
+     Toutes affichent le dos de tuile au départ. -->
       <table>
         <!-- Ligne 1 : tuiles 0 à 3 -->
         <tr>
