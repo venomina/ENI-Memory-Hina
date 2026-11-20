@@ -11,7 +11,7 @@
   <body>
     <h1>ENI - Memory</h1>
     <!-- Menu de navigation principal -->
-    <nav class="Menu">
+    <nav class="menu">
       <ul>
         <li><a href="accueil.html">Accueil</a></li>
         <li><a href="play.html">Jouer</a></li>
@@ -23,7 +23,7 @@
     <br />
 
     <!-- Bloc contenant le jeu -->
-    <fieldset class="memory-game">
+    <fieldset class="memoryGame">
       <!-- Consignes du jeu -->
       <p class="gameOn">Tentez de gagner avec le moins d'essais possible !</p>
       <p class="gameOn">
@@ -31,103 +31,105 @@
         une fois la partie terminée.
       </p>
       <br />
+      <!-- Message de victoire (rempli par memory.js) -->
       <p class="finalMessage"></p>
       <!-- Compteur de coups (mis à jour par memory.js) -->
       <p class="nbAttempts">Nombre de coups : 0</p>
 
-      <!-- Plateau de jeu : 12 cartes réparties sur 3 lignes de 4 colonnes.
-           Chaque carte a un id unique (0 à 11) utilisé par memory.js
-           pour la retourner. Toutes affichent le dos de carte au départ. -->
+      <!-- Plateau de jeu : 12 tuiles réparties sur 3 lignes de 4 colonnes.
+           memory.js récupère les cases <td> dans l'ordre (index 0 à 11) pour
+           les retourner : les id tile0 à tile11 ne sont pas utilisés par le
+           script. Toutes affichent le dos de tuile au départ. -->
       <table>
-        <!-- Ligne 1 : cartes 0 à 3 -->
+        <!-- Ligne 1 : tuiles 0 à 3 -->
         <tr>
           <td>
             <a id="tile0"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile1"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile2"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile3"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
         </tr>
-        <!-- Ligne 2 : cartes 4 à 7 -->
+        <!-- Ligne 2 : tuiles 4 à 7 -->
         <tr>
           <td>
             <a id="tile4"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile5"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile6"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile7"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
         </tr>
-        <!-- Ligne 3 : cartes 8 à 11 -->
+        <!-- Ligne 3 : tuiles 8 à 11 -->
         <tr>
           <td>
             <a id="tile8"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile9"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile10"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
           <td>
             <a id="tile11"
               ><img
-                src="/ressources/question_bleus_pastel.svg"
+                src="ressources/question_bleus_pastel.svg"
                 alt="Point d'interrogation bleu."
             /></a>
           </td>
