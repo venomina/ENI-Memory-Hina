@@ -21,6 +21,16 @@ const tabFaces = [
   "ressources/memory-legume/6.svg",
 ];
 
+// Nom de chaque image, lu par les lecteurs d'écran (accessibilité)
+const faceNames = {
+  "ressources/memory-legume/1.svg": "pomme",
+  "ressources/memory-legume/2.svg": "banane",
+  "ressources/memory-legume/3.svg": "brocoli",
+  "ressources/memory-legume/4.svg": "cerise",
+  "ressources/memory-legume/5.svg": "piment",
+  "ressources/memory-legume/6.svg": "fraise",
+};
+
 // Mélange le tableau sur place (algorithme de Fisher-Yates) :
 // à chaque position i, on échange avec une position j tirée entre i et la fin
 function mixGrid(tabFaces) {
@@ -47,6 +57,15 @@ function updateAttempts() {
   attemptsDisplay.textContent = "Nombre de coups : " + nbAttempts;
 }
 
+// Met à jour le nom accessible du bouton d'une tuile
+// (les images ont un alt vide : c'est ce nom que lit le lecteur d'écran)
+function updateTileLabel(index, faceSrc) {
+  const state = faceSrc === tilesBack ? "face cachée" : faceNames[faceSrc];
+  tiles[index]
+    .querySelector("button")
+    .setAttribute("aria-label", "Tuile " + (index + 1) + ", " + state);
+}
+
 // Retourne une tuile : la classe "flipping" réduit l'image (CSS),
 // puis on change l'image au bout de 200 ms et l'image reprend sa taille
 function tileFlip(img, newImg) {
@@ -60,6 +79,9 @@ function tileFlip(img, newImg) {
 // Mélange les tuiles au chargement de la page
 mixGrid(tabFaces);
 
+// Nom accessible initial : toutes les tuiles sont face cachée
+tiles.forEach((tile, index) => updateTileLabel(index, tilesBack));
+
 // Clic sur une tuile
 tiles.forEach((oneTile, index) => {
   oneTile.addEventListener("click", () => {
@@ -70,6 +92,7 @@ tiles.forEach((oneTile, index) => {
 
     const img = oneTile.querySelector("img");
     tileFlip(img, tabFaces[index]);
+    updateTileLabel(index, tabFaces[index]);
 
     // Première tuile du coup : on mémorise son index et on attend la seconde
     if (firstIndex === null) {
@@ -81,7 +104,8 @@ tiles.forEach((oneTile, index) => {
     nbAttempts++;
     updateAttempts();
 
-    const firstTile = tiles[firstIndex];
+    const firstTileIndex = firstIndex;
+    const firstTile = tiles[firstTileIndex];
 
     if (tabFaces[firstIndex] === tabFaces[index]) {
       // Paire trouvée : les deux tuiles restent visibles
@@ -103,6 +127,8 @@ tiles.forEach((oneTile, index) => {
       setTimeout(() => {
         tileFlip(firstTile.querySelector("img"), tilesBack);
         tileFlip(img, tilesBack);
+        updateTileLabel(firstTileIndex, tilesBack);
+        updateTileLabel(index, tilesBack);
         firstIndex = null;
         locked = false;
       }, 2000);
@@ -112,10 +138,12 @@ tiles.forEach((oneTile, index) => {
 
 // Remet la partie à zéro : tuiles cachées, compteurs à 0, nouveau mélange
 function gameReset() {
-  tiles.forEach((tile) => {
+  tiles.forEach((tile, index) => {
     tile.classList.remove("found");
     tile.querySelector("img").src = tilesBack;
+    updateTileLabel(index, tilesBack);
   });
+
   firstIndex = null;
   locked = false;
   nbAttempts = 0;
