@@ -49,7 +49,7 @@ function updateAttempts() {
 
 // Retourne une tuile : la classe "flipping" réduit l'image (CSS),
 // puis on change l'image au bout de 200 ms et l'image reprend sa taille
-function cardFlip(img, newImg) {
+function tileFlip(img, newImg) {
   img.classList.add("flipping");
   setTimeout(() => {
     img.src = newImg;
@@ -69,7 +69,7 @@ tiles.forEach((oneTile, index) => {
     }
 
     const img = oneTile.querySelector("img");
-    cardFlip(img, tabFaces[index]);
+    tileFlip(img, tabFaces[index]);
 
     // Première tuile du coup : on mémorise son index et on attend la seconde
     if (firstIndex === null) {
@@ -101,8 +101,8 @@ tiles.forEach((oneTile, index) => {
       // puis on remet les deux tuiles face cachée
       locked = true;
       setTimeout(() => {
-        cardFlip(firstTile.querySelector("img"), tilesBack);
-        cardFlip(img, tilesBack);
+        tileFlip(firstTile.querySelector("img"), tilesBack);
+        tileFlip(img, tilesBack);
         firstIndex = null;
         locked = false;
       }, 2000);
