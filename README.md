@@ -6,31 +6,30 @@ Site web d'un jeu de Memory réalisé dans le cadre de ma formation à l'ENI, en
 
 Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le moins de coups possible. À terme, il pourra gérer son profil : changer sa photo, son pseudo et son adresse mail, ainsi que le thème et le nombre de tuiles du Memory.
 
-**Fonctionnalités actuellement présentes :**
+## Fonctionnalités actuellement présentes
 
-** Jeu (`play.html` et `memory.js`)**
+### Général
 
-## Jeu (`play.html` et `memory.js`)
+- Pages d'accueil, de jeu, d'inscription, de connexion et de profil, avec un menu de navigation commun
+- Affichage adapté aux écrans mobiles (responsive)
+- Éléments accessibles : noms lisibles par les lecteurs d'écran (`aria-label`, `aria-live`), navigation au clavier
+
+### Jeu (`play.html` et `memory.js`)
 
 - Plateau de 12 tuiles (6 paires), mélangées aléatoirement à chaque partie
 - Compteur de coups joués et message de victoire
 - Animation de retournement des tuiles
 - Rejouer en appuyant sur la barre espace une fois la partie terminée
-- Formulaires d'inscription et de connexion (validation HTML)
-- Affichage adapté aux écrans mobiles (responsive)
 
-** Inscription (`inscription.html` et `inscription.js`)**
+### Inscription (`inscription.html` et `inscription.js`)
 
-## Inscription (`inscription.html` et `inscription.js`)
+- Formulaire avec champs nom d'utilisateur, adresse e-mail, mot de passe et confirmation du mot de passe
+- Validation en direct de chaque champ (icône, couleur de bordure et message d'erreur)
+- Indication visuelle de la force du mot de passe (faible, moyen ou fort)
+- Blocage de l'envoi du formulaire tant qu'il reste une erreur
+- Réinitialisation de l'état des champs et de l'indicateur de force lorsque le formulaire est réinitialisé
 
-- Formulaire avec champs nom d'utilisateur, adresse e-mail, mot de passe et confirmation du mot de passe.
-- Indication visuelle de la force du mot de passe (faible, moyen ou fort).
-- Réinitialisation de l'indicateur de force lorsque le formulaire est réinitialisé.
-
-**À noter :** le script actuel calcule uniquement un indicateur de force.
-Il ne valide pas encore les champs, ne vérifie pas la confirmation du mot
-de passe et ne crée pas de compte. De plus, l'attribut `novalidate` du
-formulaire désactive la validation native du navigateur.
+**À noter :** l'attribut `novalidate` désactive la validation native du navigateur, c'est `inscription.js` qui la remplace. Le formulaire ne crée pas encore de compte : aucune donnée n'est enregistrée.
 
 ![Aperçu du site](ressources/screenshot-ecran-jeu.png)
 
@@ -58,9 +57,9 @@ Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js)
 
 ## Guide d'utilisation
 
-![Aperçu du plateau de jeu](ressources/capture-visuel-jeu.png)
-
 ### Jouer
+
+![Aperçu du plateau de jeu](ressources/capture-visuel-jeu.png)
 
 **Règles du jeu :**
 
@@ -69,8 +68,6 @@ Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js)
 3. Sinon, elles se retournent face cachée.
 4. La partie se termine quand toutes les paires sont trouvées.
 5. Appuyez sur la barre espace pour relancer une partie.
-
-### Fonctions principales
 
 ### Fonctions (`memory.js`)
 
@@ -101,13 +98,13 @@ Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js)
 
 ### Pages du site
 
-| Page         | Fichier            | Contenu                                             |
-| ------------ | ------------------ | --------------------------------------------------- |
-| Accueil      | `accueil.html`     | Présentation et règles du jeu                       |
-| Jouer        | `play.html`        | Plateau de jeu                                      |
-| S'inscrire   | `inscription.html` | Création du compte                                  |
-| Se connecter | `signin.html`      | Connexion                                           |
-| Profil       | `profile.html`     | Infos du joueur, choix du thème et nombre de tuiles |
+| Page         | Fichier            | Contenu                                                        |
+| ------------ | ------------------ | -------------------------------------------------------------- |
+| Accueil      | `accueil.html`     | Présentation et règles du jeu                                  |
+| Jouer        | `play.html`        | Plateau de jeu                                                 |
+| S'inscrire   | `inscription.html` | Création du compte (validation JS, sans enregistrement)        |
+| Se connecter | `signin.html`      | Connexion (maquette : validation HTML uniquement)              |
+| Profil       | `profile.html`     | Infos du joueur, choix du thème et nombre de tuiles (maquette) |
 
 ## Technologies utilisées
 
@@ -123,30 +120,30 @@ ENI-Memory-Hina/
 ├── accueil.html        # Présentation et règles du jeu
 ├── play.html           # Plateau de jeu
 ├── inscription.html    # Formulaire d'inscription
-├── signin.html         # Formulaire de connexion
-├── profile.html        # Profil, choix du thème et du nombre de tuiles
+├── signin.html         # Formulaire de connexion (maquette)
+├── profile.html        # Profil, choix du thème et du nombre de tuiles (maquette)
 ├── memory.css          # Feuille de style commune
 ├── memory.js           # Logique du jeu et animation
 ├── inscription.js      # Validation de l'inscription
-└── ressources/         # Images (tuiles, icônes...)
+└── ressources/         # Images (tuiles, icônes, captures d'écran...)
 ```
 
 ## Roadmap
 
-| Étape   | Objectif                                        | Statut   |
-| ------- | ----------------------------------------------- | -------- |
-| ✅ v0.1 | Jeu fonctionnel et pages du site                | Terminé  |
-| 🔄 v0.2 | Validation complète du formulaire d'inscription | En cours |
-| ⏳ v0.3 | Connexion et sauvegarde des comptes             | À faire  |
-| ⏳ v0.4 | Sauvegarde des 5 meilleurs scores               | À faire  |
-| ⏳ v0.5 | Choix du thème et du nombre de tuiles           | À faire  |
+| Étape   | Objectif                                        | Statut  |
+| ------- | ----------------------------------------------- | ------- |
+| ✅ v0.1 | Jeu fonctionnel et pages du site                | Terminé |
+| ✅ v0.2 | Validation complète du formulaire d'inscription | Terminé |
+| ⏳ v0.3 | Connexion et sauvegarde des comptes             | À faire |
+| ⏳ v0.4 | Sauvegarde des 5 meilleurs scores               | À faire |
+| ⏳ v0.5 | Choix du thème et du nombre de tuiles           | À faire |
 
-## Bugs connus
+## Limites connues
 
-| Bug                                                               | Statut   |
-| ----------------------------------------------------------------- | -------- |
-| Le formulaire d'inscription ne valide pas encore les champs en JS | En cours |
-| La connexion et le profil sont des maquettes                      | Prévu    |
+| Limite                                                         | Statut |
+| -------------------------------------------------------------- | ------ |
+| L'inscription ne crée pas encore de compte (rien n'est stocké) | Prévu  |
+| La connexion et le profil sont des maquettes                   | Prévu  |
 
 ## Accessibilité et audits Lighthouse
 
