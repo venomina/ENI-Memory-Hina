@@ -16,7 +16,7 @@ Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le m
 - Rejouer en appuyant sur la barre espace une fois la partie terminée
 - Jeu utilisable au clavier (Tab, puis Entrée ou Espace) et annoncé aux lecteurs d'écran (`aria-label`, `aria-live`)
 
-![Aperçu du jeu : plateau de 12 tuiles, avec deux tuiles retournées (un piment et un brocoli) et le compteur à 1 coup](ressources/screenshot-ecran-jeu.png)
+![Aperçu du jeu : plateau de 12 tuiles, avec deux tuiles retournées (un piment et un brocoli) et le compteur à 1 coup](ressources\capture-visuel-jeu.png)
 
 ### Inscription (`inscription.html` et `inscription.js`)
 
@@ -181,18 +181,7 @@ Des audits Lighthouse ont été réalisés sur les pages d'accueil et de jeu.
 | Bonnes pratiques | 96/100 |
 | SEO              | 91/100 |
 
-![Résultats Lighthouse de la page d'accueil](docs/Lighthouse-accueil.png)
-
-### Lighthouse : page de jeu
-
-| Indicateur       |   Score |
-| ---------------- | ------: |
-| Performance      | 100/100 |
-| Accessibilité    |  98/100 |
-| Bonnes pratiques |  96/100 |
-| SEO              |  91/100 |
-
-![Résultats Lighthouse de la page de jeu](docs/Lighthouse-jeu.png)
+![Résultats Lighthouse de la page de jeu](ressources\resultat-lighthouse.png)
 
 Attention, un audit Lighthouse automatisé ne garantit pas à lui seul une accessibilité complète. Ces scores sont à refaire si le code a changé depuis les mesures.
 
