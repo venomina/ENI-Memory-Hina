@@ -11,7 +11,7 @@
   <body>
     <h1>ENI - Memory</h1>
     <!-- Menu de navigation principal -->
-    <nav class="Menu">
+    <nav class="menu">
       <ul>
         <li><a href="accueil.html">Accueil</a></li>
         <li><a href="play.html">Jouer</a></li>
@@ -25,12 +25,7 @@
     <!-- Bloc contenant le formulaire d'inscription -->
     <fieldset>
       <h2>Inscrivez-vous !</h2>
-      <form
-        action="/memory.html"
-        id="form-inscription"
-        method="post"
-        novalidate
-      >
+      <form action="accueil.html" id="formInscription" method="post" novalidate>
         <ul>
           <!-- Champ nom d'utilisateur : autofocus place le curseur ici au chargement -->
           <li class="group">
@@ -39,118 +34,119 @@
             <input
               type="text"
               id="name"
-              name="user_name"
+              name="userName"
               autofocus
               required
               autocomplete="username"
-              aria-describedby="error-name"
+              aria-describedby="errorName"
               placeholder="exemple : JaneD"
             />
+            <!-- Icônes de validation : affichées selon la classe du groupe
+                 (valide ou invalide) -->
             <img
               class="isOkay"
-              src="/ressources/check.svg"
+              src="ressources/check.svg"
               alt="Saisie validée."
             />
             <img
               class="notOkay"
-              src="/ressources/error.svg"
+              src="ressources/error.svg"
               alt="Saisie invalide."
             />
             <div>
-              <p class="error" id="error-name" aria-live="polite"></p>
+              <p class="error" id="errorName" aria-live="polite"></p>
             </div>
           </li>
-          <!-- Champ email : le type "email" vérifie le format de l'adresse -->
+          <!-- Champ email (novalidate désactive le contrôle du navigateur : le format
+               sera vérifié par inscription.js, à venir) -->
           <li class="group">
             <label for="mail">Entrez votre email</label>
             <br />
             <input
               type="email"
               id="mail"
-              name="user_mail"
+              name="userMail"
               placeholder="exemple : janedoe@mail.com"
               required
               autocomplete="email"
-              aria-describedby="error-mail"
+              aria-describedby="errorMail"
             />
             <img
               class="isOkay"
-              src="/ressources/check.svg"
+              src="ressources/check.svg"
               alt="Saisie validée."
             />
             <img
               class="notOkay"
-              src="/ressources/error.svg"
+              src="ressources/error.svg"
               alt="Saisie invalide."
             />
             <div>
-              <p class="error" id="error-mail" aria-live="polite"></p>
+              <p class="error" id="errorMail" aria-live="polite"></p>
             </div>
           </li>
-          <!-- Champ mot de passe : le pattern vérifie les règles de saisie -->
+          <!-- Champ mot de passe : sa force est estimée par inscription.js -->
           <li class="group">
             <label for="password">Mot de passe</label>
             <br />
             <input
               type="password"
               id="password"
-              name="user_password"
+              name="userPassword"
               required
               placeholder="Votre mot de passe"
               autocomplete="new-password"
-              aria-describedby="error-password"
+              aria-describedby="errorPassword"
             />
             <img
               class="isOkay"
-              src="/ressources/check.svg"
+              src="ressources/check.svg"
               alt="Saisie validée."
             />
             <img
               class="notOkay"
-              src="/ressources/error.svg"
+              src="ressources/error.svg"
               alt="Saisie invalide."
             />
             <!-- Rappel des règles du mot de passe -->
             <p class="passRule" id="passRule">
               Au moins un symbole, un chiffre, ainsi que 6 caractères minimum.
             </p>
+            <!-- Indicateur de force : inscription.js modifie data-level
+                 (faible, moyen, fort), le CSS en déduit couleur et longueur -->
             <div class="passStrength" id="passStrength" data-level="">
               <div class="strengthBar"><span></span></div>
-              <p class="strengthText" id="strength-text" aria-live="polite"></p>
+              <p class="strengthText" id="strengthText" aria-live="polite"></p>
             </div>
             <div>
-              <p class="error" id="error-password" aria-live="polite"></p>
+              <p class="error" id="errorPassword" aria-live="polite"></p>
             </div>
           </li>
           <!-- Confirmation du mot de passe par l'utilisateur-->
           <li class="group">
-            <label for="password-confirm">Confirmer le mot de passe</label>
+            <label for="passwordConfirm">Confirmer le mot de passe</label>
             <br />
             <input
               type="password"
-              id="password-confirm"
-              name="user-password-confirm"
+              id="passwordConfirm"
+              name="userPasswordConfirm"
               required
               placeholder="Confirmez le mot de passe"
               autocomplete="new-password"
-              aria-describedby="error-password-confirm"
+              aria-describedby="errorPasswordConfirm"
             />
             <img
               class="isOkay"
-              src="/ressources/check.svg"
+              src="ressources/check.svg"
               alt="Saisie validée."
             />
             <img
               class="notOkay"
-              src="/ressources/error.svg"
+              src="ressources/error.svg"
               alt="Saisie invalide."
             />
             <div>
-              <p
-                class="error"
-                id="error-password-confirm"
-                aria-live="polite"
-              ></p>
+              <p class="error" id="errorPasswordConfirm" aria-live="polite"></p>
             </div>
           </li>
         </ul>
@@ -161,6 +157,7 @@
         </div>
       </form>
     </fieldset>
+    <!-- Script JS de l'inscription (indicateur de force du mot de passe) -->
     <script src="inscription.js" defer></script>
   </body>
 </html>
