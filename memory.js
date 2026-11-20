@@ -1,4 +1,11 @@
+// ==========================================================================
+// memory.js : logique du jeu de Memory (page play.html)
+// ==========================================================================
+
+// Image affichée sur le dos d'une tuile (face cachée)
 const tilesBack = "ressources/question_bleus_pastel.svg";
+
+// Images des faces : 6 légumes, chacun présent 2 fois (= 6 paires)
 const tabFaces = [
   "ressources/memory-legume/1.svg",
   "ressources/memory-legume/2.svg",
@@ -14,6 +21,8 @@ const tabFaces = [
   "ressources/memory-legume/6.svg",
 ];
 
+// Mélange le tableau sur place (algorithme de Fisher-Yates) :
+// à chaque position i, on échange avec une position j tirée entre i et la fin
 function mixGrid(tabFaces) {
   for (let i = 0; i < tabFaces.length - 1; i++) {
     const j = i + Math.floor(Math.random() * (tabFaces.length - i));
@@ -21,20 +30,25 @@ function mixGrid(tabFaces) {
   }
 }
 
-const tiles = document.querySelectorAll("td");
+// Éléments de la page
+const tiles = document.querySelectorAll("td"); // les 12 tuiles du plateau
 const attemptsDisplay = document.querySelector(".nbAttempts");
 const finalMessage = document.querySelector(".finalMessage");
 
-let firstIndex = null;
-let locked = false;
-let nbAttempts = 0;
-let nbFound = 0;
-let gameOver = false;
+// État de la partie
+let firstIndex = null; // index de la première tuile retournée (null si aucune)
+let locked = false; // true tant que deux tuiles différentes sont visibles
+let nbAttempts = 0; // nombre de coups joués
+let nbFound = 0; // nombre de tuiles déjà trouvées
+let gameOver = false; // true quand toutes les paires sont trouvées
 
+// Affiche le nombre de coups dans le compteur
 function updateAttempts() {
   attemptsDisplay.textContent = "Nombre de coups : " + nbAttempts;
 }
 
+// Retourne une tuile : la classe "flipping" réduit l'image (CSS),
+// puis on change l'image au bout de 200 ms et l'image reprend sa taille
 function cardFlip(img, newImg) {
   img.classList.add("flipping");
   setTimeout(() => {
@@ -42,10 +56,14 @@ function cardFlip(img, newImg) {
     img.classList.remove("flipping");
   }, 200);
 }
+
+// Mélange les tuiles au chargement de la page
 mixGrid(tabFaces);
 
+// Clic sur une tuile
 tiles.forEach((oneTile, index) => {
   oneTile.addEventListener("click", () => {
+    // Clic ignoré : jeu verrouillé, même tuile que la première, ou déjà trouvée
     if (locked || index === firstIndex || oneTile.classList.contains("found")) {
       return;
     }
@@ -53,20 +71,25 @@ tiles.forEach((oneTile, index) => {
     const img = oneTile.querySelector("img");
     cardFlip(img, tabFaces[index]);
 
+    // Première tuile du coup : on mémorise son index et on attend la seconde
     if (firstIndex === null) {
       firstIndex = index;
       return;
     }
+
+    // Seconde tuile : un coup est joué
     nbAttempts++;
     updateAttempts();
 
     const firstTile = tiles[firstIndex];
 
     if (tabFaces[firstIndex] === tabFaces[index]) {
+      // Paire trouvée : les deux tuiles restent visibles
       firstTile.classList.add("found");
       oneTile.classList.add("found");
       firstIndex = null;
 
+      // Toutes les paires sont trouvées : victoire
       nbFound += 2;
       if (nbFound === tiles.length) {
         gameOver = true;
@@ -74,6 +97,8 @@ tiles.forEach((oneTile, index) => {
           "Bravo ! Vous avez gagné en " + nbAttempts + " coups !";
       }
     } else {
+      // Paire différente : on verrouille le jeu 2 secondes,
+      // puis on remet les deux tuiles face cachée
       locked = true;
       setTimeout(() => {
         cardFlip(firstTile.querySelector("img"), tilesBack);
@@ -85,6 +110,7 @@ tiles.forEach((oneTile, index) => {
   });
 });
 
+// Remet la partie à zéro : tuiles cachées, compteurs à 0, nouveau mélange
 function gameReset() {
   tiles.forEach((tile) => {
     tile.classList.remove("found");
@@ -100,9 +126,10 @@ function gameReset() {
   mixGrid(tabFaces);
 }
 
+// Barre espace : relance une partie, seulement si la partie est terminée
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space" && gameOver) {
-    event.preventDefault();
+    event.preventDefault(); // empêche le défilement de la page
     gameReset();
   }
 });

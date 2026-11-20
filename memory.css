@@ -7,7 +7,7 @@
    3. Navigation
    4. Blocs (fieldset)
    5. Formulaires (champs, boutons)
-   6. Validation des champs (inscription)
+   6. Groupes de champs et validation (inscription, connexion)
    7. Pages : accueil, jeu, connexion, profil
    8. Force du mot de passe
    9. Responsive (mobile)
@@ -161,7 +161,7 @@ fieldset ul.gameRules {
 
 /* Blocs plus larges pour l'accueil et le jeu */
 fieldset.accueilMemory,
-.memory-game {
+fieldset.memoryGame {
   width: 90%;
   max-width: 1100px;
   margin: 5vh auto;
@@ -245,9 +245,9 @@ button:hover {
 }
 
 /* ==========================================================================
-   6. VALIDATION DES CHAMPS (inscription)
+   6. GROUPES DE CHAMPS ET VALIDATION (inscription, connexion)
    ========================================================================== */
-/* Un groupe = label + champ + icône + message d'erreur */
+/* Un groupe = label + champ (+ icône et message d'erreur sur l'inscription) */
 .group {
   position: relative;
   list-style: none;
@@ -324,11 +324,8 @@ p.passRule {
   margin: 0.4rem 0 0;
 }
 
-.passRule {
-  margin-bottom: 0;
-}
-
-#password-confirm {
+/* Pas de marge au-dessus du champ de confirmation */
+#passwordConfirm {
   margin-top: 0;
 }
 
@@ -336,7 +333,7 @@ p.passRule {
    7. PAGES
    ========================================================================== */
 /* ---------- Accueil ---------- */
-img.exemple-memory {
+img.exempleMemory {
   display: block;
   height: auto;
   width: 100%;
@@ -357,7 +354,7 @@ p.gameOn {
   font-size: larger;
 }
 
-fieldset.memory-game p {
+fieldset.memoryGame p {
   text-align: center;
   max-width: 900px;
   margin-left: auto;
@@ -365,7 +362,7 @@ fieldset.memory-game p {
 }
 
 /* ---------- Jeu : plateau ---------- */
-fieldset.memory-game table {
+fieldset.memoryGame table {
   width: 100%;
   max-width: 1000px;
   /* Colonnes de largeur égale */
@@ -377,7 +374,7 @@ fieldset.memory-game table {
 }
 
 /* Une case = une tuile */
-fieldset.memory-game td {
+fieldset.memoryGame td {
   padding: 0;
   border: 1px solid white;
   border-radius: 12px;
@@ -387,12 +384,12 @@ fieldset.memory-game td {
   cursor: pointer;
 }
 
-fieldset.memory-game td:hover {
+fieldset.memoryGame td:hover {
   border: 1px solid black;
 }
 
 /* Image carrée qui remplit toute la tuile */
-fieldset.memory-game td img {
+fieldset.memoryGame td img {
   width: 100%;
   height: auto;
   aspect-ratio: 1/1;
@@ -408,6 +405,7 @@ td img.flipping {
 }
 
 /* ---------- Connexion ---------- */
+/* Fond plus foncé que les autres blocs */
 fieldset.signin {
   background-color: #222222;
 }
@@ -430,6 +428,7 @@ fieldset.signin button:hover {
   background-color: #eeaeca;
 }
 
+/* Placeholders plus petits et plus discrets */
 fieldset.signin input::placeholder {
   font-size: 1rem;
   color: #888888;
@@ -443,11 +442,13 @@ fieldset.signin input:-webkit-autofill:focus {
 }
 
 /* ---------- Profil ---------- */
+/* Conteneur du profil */
 .userProfile {
   max-width: 400px;
   margin: 0 auto;
 }
 
+/* Avatar rond, centré */
 .profileImage {
   display: block;
   width: 80px;
@@ -460,6 +461,7 @@ fieldset.signin input:-webkit-autofill:focus {
   box-sizing: border-box;
 }
 
+/* Un bloc = un label + son champ */
 .userProfile .field {
   margin-bottom: 1.5rem;
 }
@@ -468,6 +470,7 @@ fieldset.signin input:-webkit-autofill:focus {
   display: block;
 }
 
+/* Listes déroulantes */
 .userProfile select {
   margin-top: 6px;
   padding: 4px 8px;
@@ -479,6 +482,7 @@ fieldset.signin input:-webkit-autofill:focus {
   cursor: pointer;
 }
 
+/* Bouton crème, centré */
 .userProfile button {
   display: block;
   margin: 2rem auto 0;
@@ -501,6 +505,7 @@ fieldset.signin input:-webkit-autofill:focus {
   display: none;
 }
 
+/* Barre grise de fond : son span intérieur est coloré selon data-level */
 .strengthBar {
   height: 8px;
   border-radius: 4px;
@@ -523,7 +528,7 @@ fieldset.signin input:-webkit-autofill:focus {
   margin: 0.25rem 0 0;
 }
 
-/* Faible */
+/* Faible : barre à 25 %, rouge */
 .passStrength[data-level="faible"] .strengthBar span {
   width: 25%;
   background-color: crimson;
@@ -533,7 +538,7 @@ fieldset.signin input:-webkit-autofill:focus {
   color: #ff6b81;
 }
 
-/* Moyen */
+/* Moyen : barre à 50 %, orange */
 .passStrength[data-level="moyen"] .strengthBar span {
   width: 50%;
   background-color: orange;
@@ -543,7 +548,7 @@ fieldset.signin input:-webkit-autofill:focus {
   color: orange;
 }
 
-/* Fort */
+/* Fort : barre à 100 %, vert */
 .passStrength[data-level="fort"] .strengthBar span {
   width: 100%;
   background-color: limegreen;
@@ -572,7 +577,7 @@ fieldset.signin input:-webkit-autofill:focus {
     padding: 1.2rem;
   }
 
-  fieldset.memory-game table {
+  fieldset.memoryGame table {
     border-spacing: 6px;
   }
 }
