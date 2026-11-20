@@ -17,6 +17,54 @@ const passwordConfirm = document.getElementById("passwordConfirm");
 const strength = document.getElementById("passStrength");
 const strengthText = document.getElementById("strengthText");
 
+function setState(input, isGood, message = "") {
+  const group = input.closest(".group");
+  const error = group.querySelector(".error");
+
+  group.classList.toggle("valide", isGood === true);
+  group.classList.toggle("invalide", isGood === false);
+
+  if (isGood === null) {
+    input.removeAttribute("aria-invalid");
+  } else {
+    input.setAttribute("aria-invalid", String(isGood === false));
+  }
+
+  error.textContent = isGood === false ? message : "";
+}
+
+function validateName() {
+  const isGood = userName.value.trim().length >= 3;
+  setState(userName, isGood, "Rentrez au moins 3 caractères.");
+  return isGood;
+}
+
+function validateMail() {
+  const isGood = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail.value.trim());
+  setState(mail, isGood, "Merci d'entrer une adresse mail valide.");
+  return isGood;
+}
+
+function validatePassword() {
+  const value = password.value;
+  const hasNumber = /\d/.test(value);
+  const hasSymbol = /[^\p{L}\p{N}]/u.test(value);
+  const isGood = value.length >= 6 && hasNumber && hasSymbol;
+  setState(
+    password,
+    isGood,
+    "Rentrez un mot de passe valide (6 caractères, un chiffre, un symbole).",
+  );
+  return isGood;
+}
+
+function validatePasswordConfirm() {
+  const isGood =
+    passwordConfirm.value !== "" && passwordConfirm.value === password.value;
+  setState(passwordConfirm, isGood, "Les mots de passe ne correspondent pas.");
+  return isGood;
+}
+
 // Calcule le niveau du mot de passe : "faible", "moyen" ou "fort"
 function getStrength(value) {
   const hasNumber = /\d/.test(value);
@@ -52,11 +100,51 @@ function updateStrength() {
     "Niveau de sécurité : " + level.charAt(0).toUpperCase() + level.slice(1);
 }
 
-// Recalcule l'indicateur à chaque caractère saisi
-password.addEventListener("input", updateStrength);
+userName.addEventListener("input", () => {
+  if (userName.value === "") return setState(userName, null);
+  validateName();
+});
 
-// Efface l'indicateur quand on clique sur "Annuler"
+mail.addEventListener("input", () => {
+  if (mail.value === "") return setState(mail, null);
+  validateMail();
+});
+
+passwordConfirm.addEventListener("input", () => {
+  if (passwordConfirm.value === "") return setState(passwordConfirm, null);
+  validatePasswordConfirm();
+});
+
+password.addEventListener("input", () => {
+  updateStrength();
+  if (password.value === "") {
+    setState(password, null);
+  } else {
+    validatePassword();
+  }
+
+  if (passwordConfirm.value !== "") validatePasswordConfirm();
+});
+
+form.addEventListener("submit", (event) => {
+  const results = [
+    [userName, validateName()],
+    [mail, validateMail()],
+    [password, validatePassword()],
+    [passwordConfirm, validatePasswordConfirm()],
+  ];
+
+  const firstError = results.find(([, isGood]) => !isGood);
+  if (firstError) {
+    event.preventDefault();
+    firstError[0].focus();
+  }
+});
+
 form.addEventListener("reset", () => {
+  [userName, mail, password, passwordConfirm].forEach((input) =>
+    setState(input, null),
+  );
   strength.dataset.level = "";
   strengthText.textContent = "";
 });
