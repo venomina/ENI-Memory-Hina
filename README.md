@@ -6,55 +6,33 @@ Site web d'un jeu de Memory réalisé dans le cadre de ma formation à l'ENI, en
 
 Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le moins de coups possible. À terme, il pourra gérer son profil : changer sa photo, son pseudo et son adresse mail, ainsi que le thème et le nombre de tuiles du Memory.
 
-## Fonctionnalités actuellement présentes
+**Fonctionnalités actuellement présentes :**
 
-### Jeu (`play.html` et `memory.js`)
+** Jeu (`play.html` et `memory.js`)**
+
+## Jeu (`play.html` et `memory.js`)
 
 - Plateau de 12 tuiles (6 paires), mélangées aléatoirement à chaque partie
 - Compteur de coups joués et message de victoire
 - Animation de retournement des tuiles
 - Rejouer en appuyant sur la barre espace une fois la partie terminée
-- Jeu utilisable au clavier (Tab, puis Entrée ou Espace) et annoncé aux lecteurs d'écran (`aria-label`, `aria-live`)
-
-![Aperçu du jeu : plateau de 12 tuiles, avec deux tuiles retournées (un piment et un brocoli) et le compteur à 1 coup](ressources\capture-visuel-jeu.png)
-
-### Inscription (`inscription.html` et `inscription.js`)
-
-- Formulaire avec les champs nom d'utilisateur, adresse e-mail, mot de passe et confirmation du mot de passe
-- Validation en direct pendant la saisie : bordure verte ou rouge, icône et message d'erreur
-- Indicateur de force du mot de passe (faible, moyen ou fort)
-- Envoi bloqué tant qu'un champ est invalide, avec le curseur placé sur le premier champ en erreur
-- Réinitialisation des champs et de l'indicateur avec le bouton « Annuler »
-
-**À noter :** le script ne crée pas encore de compte : le formulaire envoie vers `accueil.html` en `post`. L'attribut `novalidate` désactive la validation native du navigateur, car la validation est faite par `inscription.js`.
-
-| Champ             | Règle de validation                                 |
-| ----------------- | --------------------------------------------------- |
-| Nom d'utilisateur | 3 caractères minimum                                |
-| Adresse e-mail    | Format `texte@texte.extension`, sans espace         |
-| Mot de passe      | 6 caractères minimum, avec un chiffre et un symbole |
-| Confirmation      | Identique au mot de passe                           |
-
-| Niveau | Condition                                           |
-| ------ | --------------------------------------------------- |
-| Faible | 6 caractères ou moins, ou lettres seulement         |
-| Moyen  | Plus de 6 caractères, avec un chiffre ou un symbole |
-| Fort   | Plus de 9 caractères, avec un chiffre et un symbole |
-
-### Connexion (`signin.html`)
-
-- Formulaire e-mail et mot de passe, avec la validation native du navigateur (`required`, `pattern`)
-- Maquette : aucun compte n'est vérifié pour l'instant
-
-### Profil (`profile.html`)
-
-- Maquette : champs nom d'utilisateur et adresse mail, choix du thème et de la taille du Memory
-- Aucun script : rien n'est enregistré pour l'instant
-
-### Ensemble du site
-
-- Menu de navigation et feuille de style communs (`memory.css`)
+- Formulaires d'inscription et de connexion (validation HTML)
 - Affichage adapté aux écrans mobiles (responsive)
+
+** Inscription (`inscription.html` et `inscription.js`)**
+
+## Inscription (`inscription.html` et `inscription.js`)
+
+- Formulaire avec champs nom d'utilisateur, adresse e-mail, mot de passe et confirmation du mot de passe.
+- Indication visuelle de la force du mot de passe (faible, moyen ou fort).
+- Réinitialisation de l'indicateur de force lorsque le formulaire est réinitialisé.
+
+**À noter :** le script actuel calcule uniquement un indicateur de force.
+Il ne valide pas encore les champs, ne vérifie pas la confirmation du mot
+de passe et ne crée pas de compte. De plus, l'attribut `novalidate` du
+formulaire désactive la validation native du navigateur.
+
+![Aperçu du jeu](ressources/screenshot-ecran-jeu.png)
 
 ## Statut du projet
 
@@ -62,8 +40,7 @@ Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le m
 
 - [x] Jeu fonctionnel
 - [x] Pages et mise en forme
-- [x] Indicateur de force du mot de passe
-- [x] Validation complète du formulaire d'inscription
+- [ ] Validation complète du formulaire d'inscription
 - [ ] Connexion et sauvegarde des comptes
 - [ ] Sauvegarde des 5 meilleurs scores
 - [ ] Choix du thème et du nombre de tuiles dans le profil
@@ -85,37 +62,29 @@ Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js)
 **Règles du jeu :**
 
 1. Allez sur la page **Jouer**.
-2. Cliquez sur deux tuiles (ou naviguez avec Tab puis Entrée) : si les images sont identiques, elles restent visibles.
+2. Cliquez sur deux tuiles : si les images sont identiques, elles restent visibles.
 3. Sinon, elles se retournent face cachée.
 4. La partie se termine quand toutes les paires sont trouvées.
 5. Appuyez sur la barre espace pour relancer une partie.
 
+### Fonctions principales
+
 ### Fonctions (`memory.js`)
 
-| Fonction                          | Rôle                                                              | Retourne                  |
-| --------------------------------- | ----------------------------------------------------------------- | ------------------------- |
-| `mixGrid(tabFaces)`               | Mélange les images du tableau                                     | Rien (modifie le tableau) |
-| `updateAttempts()`                | Met à jour l'affichage du nombre de coups                         | Rien                      |
-| `updateTileLabel(index, faceSrc)` | Met à jour le nom accessible (`aria-label`) du bouton d'une tuile | Rien                      |
-| `tileFlip(img, newImg)`           | Retourne une tuile avec une animation de 200 ms                   | Rien                      |
-| `gameReset()`                     | Remet le jeu à zéro et remélange les tuiles                       | Rien                      |
-| Écouteur `click`                  | Gère le coup : retourne la tuile, compare la paire                | Rien                      |
-| Écouteur `keydown`                | Relance une partie avec la barre espace après une victoire        | Rien                      |
+| Fonction                | Rôle                                                        | Retourne                  |
+| ----------------------- | ----------------------------------------------------------- | ------------------------- |
+| `mixGrid(tabFaces)`     | Mélange les images du tableau                               | Rien (modifie le tableau) |
+| `updateAttempts()`      | Met à jour l'affichage du nombre de coups                   | Rien                      |
+| `gameReset()`           | Remet le jeu à zéro et remélange les tuiles                 | Rien                      |
+| `cardFlip(img, newImg)` | Retourne une tuile avec une animation de 200 ms             | Rien                      |
+| Écouteur `keydown`      | Relance une partie avec la barre espace après une victoire. | Rien                      |
 
-### Fonctions (`inscription.js`)
-
-| Fonction / élément                 | Rôle                                                                   | Retourne                                        |
-| ---------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------- |
-| `setState(input, isGood, message)` | Applique l'état d'un champ (valide, invalide ou neutre) et son message | Rien                                            |
-| `validateName()`                   | Vérifie le nom d'utilisateur (3 caractères minimum)                    | `true` si valide, sinon `false`                 |
-| `validateMail()`                   | Vérifie le format de l'adresse e-mail                                  | `true` si valide, sinon `false`                 |
-| `validatePassword()`               | Vérifie le mot de passe (6 caractères, un chiffre, un symbole)         | `true` si valide, sinon `false`                 |
-| `validatePasswordConfirm()`        | Vérifie que la confirmation est identique au mot de passe              | `true` si valide, sinon `false`                 |
-| `getStrength(value)`               | Estime la force du mot de passe (longueur, chiffre, symbole)           | Une chaîne : `"faible"`, `"moyen"` ou `"fort"`. |
-| `updateStrength()`                 | Met à jour le niveau (`data-level`) et le texte sous le champ          | Rien                                            |
-| Écouteurs `input`                  | Valident chaque champ pendant la saisie                                | Rien                                            |
-| Écouteur `submit`                  | Valide tous les champs et bloque l'envoi s'il reste une erreur         | Rien                                            |
-| Écouteur `reset`                   | Efface l'état des champs et l'indicateur lors de la réinitialisation   | Rien                                            |
+| Fonction / élément   | Rôle                                                                                   | Retour                                          |
+| -------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `getStrength(value)` | Estime la force du mot de passe à partir de sa longueur, d'un chiffre et d'un symbole. | Une chaîne : `"faible"`, `"moyen"` ou `"fort"`. |
+| `updateStrength()`   | Met à jour le niveau et le texte affichés sous le champ mot de passe.                  | Rien                                            |
+| Écouteur `input`     | Recalcule l'indicateur pendant la saisie en appelant `updateStrength()`.               | Rien                                            |
+| Écouteur `reset`     | Efface l'indicateur lors de la réinitialisation du formulaire.                         | Rien                                            |
 
 ### Pages du site
 
@@ -145,45 +114,48 @@ ENI-Memory-Hina/
 ├── profile.html        # Profil, choix du thème et du nombre de tuiles
 ├── memory.css          # Feuille de style commune
 ├── memory.js           # Logique du jeu et animation
-├── inscription.js      # Validation du formulaire et indicateur de force
-├── README.md           # Présentation du projet
-├── docs/               # Captures des audits Lighthouse
+├── inscription.js      # Validation de l'inscription
 └── ressources/         # Images (tuiles, icônes...)
 ```
 
 ## Roadmap
 
-| Étape   | Objectif                                        | Statut  |
-| ------- | ----------------------------------------------- | ------- |
-| ✅ v0.1 | Jeu fonctionnel et pages du site                | Terminé |
-| ✅ v0.2 | Validation complète du formulaire d'inscription | Terminé |
-| ⏳ v0.3 | Connexion et sauvegarde des comptes             | À faire |
-| ⏳ v0.4 | Sauvegarde des 5 meilleurs scores               | À faire |
-| ⏳ v0.5 | Choix du thème et du nombre de tuiles           | À faire |
+| Étape   | Objectif                                        | Statut   |
+| ------- | ----------------------------------------------- | -------- |
+| ✅ v0.1 | Jeu fonctionnel et pages du site                | Terminé  |
+| 🔄 v0.2 | Validation complète du formulaire d'inscription | En cours |
+| ⏳ v0.3 | Connexion et sauvegarde des comptes             | À faire  |
+| ⏳ v0.4 | Sauvegarde des 5 meilleurs scores               | À faire  |
+| ⏳ v0.5 | Choix du thème et du nombre de tuiles           | À faire  |
 
 ## Bugs connus
 
-| Bug                                                                                           | Statut                                 |
-| --------------------------------------------------------------------------------------------- | -------------------------------------- |
-| La connexion et le profil sont des maquettes                                                  | Prévu                                  |
-| Les formulaires envoient en `post` vers des pages statiques (erreur « Cannot POST » en local) | Prévu (nécessite un back-end ou du JS) |
+| Bug                                                               | Statut   |
+| ----------------------------------------------------------------- | -------- |
+| Le formulaire d'inscription ne valide pas encore les champs en JS | En cours |
+| La connexion et le profil sont des maquettes                      | Prévu    |
 
 ## Accessibilité et audits Lighthouse
 
-Des audits Lighthouse ont été réalisés sur les pages d'accueil et de jeu.
+Des audits Lighthouse ont été réalisés sur les versions ordinateur et mobile
+du site. Les deux captures présentent les mêmes résultats :
 
-### Lighthouse : page d'accueil
+| Indicateur       | Ordinateur |  Mobile |
+| ---------------- | ---------: | ------: |
+| Performance      |    100/100 | 100/100 |
+| Accessibilité    |     98/100 |  98/100 |
+| Bonnes pratiques |     96/100 |  96/100 |
+| SEO              |     90/100 |  90/100 |
 
-| Indicateur       |  Score |
-| ---------------- | -----: |
-| Performance      | 96/100 |
-| Accessibilité    | 97/100 |
-| Bonnes pratiques | 96/100 |
-| SEO              | 91/100 |
+Attention, un audit Lighthouse automatisé ne garantit pas à lui seul une accessibilité complète.
 
-![Résultats Lighthouse de la page de jeu](ressources\resultat-lighthouse.png)
+### Résultats sur ordinateur
 
-Attention, un audit Lighthouse automatisé ne garantit pas à lui seul une accessibilité complète. Ces scores sont à refaire si le code a changé depuis les mesures.
+![Résultats Lighthouse sur ordinateur](docs/Lighthouse-Desktop.png)
+
+### Résultats sur mobile
+
+![Résultats Lighthouse sur mobile](docs/Lighthouse-Mobile.png)
 
 ## FAQ
 
@@ -195,9 +167,6 @@ Pas encore, mais c'est prévu dans la roadmap.
 
 **Pourquoi s'inscrire ?**
 S'inscrire sert à conserver ses scores (fonctionnalité à venir).
-
-**Comment est calculée la force du mot de passe ?**
-Voir le tableau de la section Inscription : elle dépend de la longueur, de la présence d'un chiffre et d'un symbole.
 
 ## Auteur
 
