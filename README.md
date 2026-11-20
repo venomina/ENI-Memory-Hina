@@ -16,15 +16,24 @@ Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le m
 - Rejouer en appuyant sur la barre espace une fois la partie terminée
 - Jeu utilisable au clavier (Tab, puis Entrée ou Espace) et annoncé aux lecteurs d'écran (`aria-label`, `aria-live`)
 
-![Aperçu du jeu](ressources/screenshot-ecran-jeu.png)
+![Aperçu du jeu : plateau de 12 tuiles, avec deux tuiles retournées (un piment et un brocoli) et le compteur à 1 coup](ressources/screenshot-ecran-jeu.png)
 
 ### Inscription (`inscription.html` et `inscription.js`)
 
 - Formulaire avec les champs nom d'utilisateur, adresse e-mail, mot de passe et confirmation du mot de passe
+- Validation en direct pendant la saisie : bordure verte ou rouge, icône et message d'erreur
 - Indicateur de force du mot de passe (faible, moyen ou fort)
-- Réinitialisation de l'indicateur lorsque le formulaire est réinitialisé
+- Envoi bloqué tant qu'un champ est invalide, avec le curseur placé sur le premier champ en erreur
+- Réinitialisation des champs et de l'indicateur avec le bouton « Annuler »
 
-**À noter :** le script actuel calcule uniquement l'indicateur de force. Il ne valide pas encore les champs, ne vérifie pas la confirmation du mot de passe et ne crée pas de compte. De plus, l'attribut `novalidate` du formulaire désactive la validation native du navigateur.
+**À noter :** le script ne crée pas encore de compte : le formulaire envoie vers `accueil.html` en `post`. L'attribut `novalidate` désactive la validation native du navigateur, car la validation est faite par `inscription.js`.
+
+| Champ             | Règle de validation                                 |
+| ----------------- | --------------------------------------------------- |
+| Nom d'utilisateur | 3 caractères minimum                                |
+| Adresse e-mail    | Format `texte@texte.extension`, sans espace         |
+| Mot de passe      | 6 caractères minimum, avec un chiffre et un symbole |
+| Confirmation      | Identique au mot de passe                           |
 
 | Niveau | Condition                                           |
 | ------ | --------------------------------------------------- |
@@ -54,7 +63,7 @@ Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le m
 - [x] Jeu fonctionnel
 - [x] Pages et mise en forme
 - [x] Indicateur de force du mot de passe
-- [ ] Validation complète du formulaire d'inscription
+- [x] Validation complète du formulaire d'inscription
 - [ ] Connexion et sauvegarde des comptes
 - [ ] Sauvegarde des 5 meilleurs scores
 - [ ] Choix du thème et du nombre de tuiles dans le profil
@@ -95,12 +104,18 @@ Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js)
 
 ### Fonctions (`inscription.js`)
 
-| Fonction / élément   | Rôle                                                                    | Retourne                                        |
-| -------------------- | ----------------------------------------------------------------------- | ----------------------------------------------- |
-| `getStrength(value)` | Estime la force du mot de passe (longueur, chiffre, symbole)            | Une chaîne : `"faible"`, `"moyen"` ou `"fort"`. |
-| `updateStrength()`   | Met à jour le niveau (`data-level`) et le texte sous le champ           | Rien                                            |
-| Écouteur `input`     | Recalcule l'indicateur pendant la saisie en appelant `updateStrength()` | Rien                                            |
-| Écouteur `reset`     | Efface l'indicateur lors de la réinitialisation du formulaire           | Rien                                            |
+| Fonction / élément                 | Rôle                                                                   | Retourne                                        |
+| ---------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------- |
+| `setState(input, isGood, message)` | Applique l'état d'un champ (valide, invalide ou neutre) et son message | Rien                                            |
+| `validateName()`                   | Vérifie le nom d'utilisateur (3 caractères minimum)                    | `true` si valide, sinon `false`                 |
+| `validateMail()`                   | Vérifie le format de l'adresse e-mail                                  | `true` si valide, sinon `false`                 |
+| `validatePassword()`               | Vérifie le mot de passe (6 caractères, un chiffre, un symbole)         | `true` si valide, sinon `false`                 |
+| `validatePasswordConfirm()`        | Vérifie que la confirmation est identique au mot de passe              | `true` si valide, sinon `false`                 |
+| `getStrength(value)`               | Estime la force du mot de passe (longueur, chiffre, symbole)           | Une chaîne : `"faible"`, `"moyen"` ou `"fort"`. |
+| `updateStrength()`                 | Met à jour le niveau (`data-level`) et le texte sous le champ          | Rien                                            |
+| Écouteurs `input`                  | Valident chaque champ pendant la saisie                                | Rien                                            |
+| Écouteur `submit`                  | Valide tous les champs et bloque l'envoi s'il reste une erreur         | Rien                                            |
+| Écouteur `reset`                   | Efface l'état des champs et l'indicateur lors de la réinitialisation   | Rien                                            |
 
 ### Pages du site
 
@@ -130,7 +145,7 @@ ENI-Memory-Hina/
 ├── profile.html        # Profil, choix du thème et du nombre de tuiles
 ├── memory.css          # Feuille de style commune
 ├── memory.js           # Logique du jeu et animation
-├── inscription.js      # Indicateur de force du mot de passe
+├── inscription.js      # Validation du formulaire et indicateur de force
 ├── README.md           # Présentation du projet
 ├── docs/               # Captures des audits Lighthouse
 └── ressources/         # Images (tuiles, icônes...)
@@ -138,42 +153,48 @@ ENI-Memory-Hina/
 
 ## Roadmap
 
-| Étape   | Objectif                                        | Statut   |
-| ------- | ----------------------------------------------- | -------- |
-| ✅ v0.1 | Jeu fonctionnel et pages du site                | Terminé  |
-| 🔄 v0.2 | Validation complète du formulaire d'inscription | En cours |
-| ⏳ v0.3 | Connexion et sauvegarde des comptes             | À faire  |
-| ⏳ v0.4 | Sauvegarde des 5 meilleurs scores               | À faire  |
-| ⏳ v0.5 | Choix du thème et du nombre de tuiles           | À faire  |
+| Étape   | Objectif                                        | Statut  |
+| ------- | ----------------------------------------------- | ------- |
+| ✅ v0.1 | Jeu fonctionnel et pages du site                | Terminé |
+| ✅ v0.2 | Validation complète du formulaire d'inscription | Terminé |
+| ⏳ v0.3 | Connexion et sauvegarde des comptes             | À faire |
+| ⏳ v0.4 | Sauvegarde des 5 meilleurs scores               | À faire |
+| ⏳ v0.5 | Choix du thème et du nombre de tuiles           | À faire |
 
 ## Bugs connus
 
 | Bug                                                                                           | Statut                                 |
 | --------------------------------------------------------------------------------------------- | -------------------------------------- |
-| Le formulaire d'inscription ne valide pas encore les champs en JS                             | En cours                               |
 | La connexion et le profil sont des maquettes                                                  | Prévu                                  |
 | Les formulaires envoient en `post` vers des pages statiques (erreur « Cannot POST » en local) | Prévu (nécessite un back-end ou du JS) |
 
 ## Accessibilité et audits Lighthouse
 
-Des audits Lighthouse ont été réalisés sur les versions ordinateur et mobile du site. Les deux captures présentent les mêmes résultats :
+Des audits Lighthouse ont été réalisés sur les pages d'accueil et de jeu.
 
-| Indicateur       | Ordinateur |  Mobile |
-| ---------------- | ---------: | ------: |
-| Performance      |    100/100 | 100/100 |
-| Accessibilité    |     98/100 |  98/100 |
-| Bonnes pratiques |     96/100 |  96/100 |
-| SEO              |     90/100 |  90/100 |
+### Lighthouse : page d'accueil
+
+| Indicateur       |  Score |
+| ---------------- | -----: |
+| Performance      | 96/100 |
+| Accessibilité    | 97/100 |
+| Bonnes pratiques | 96/100 |
+| SEO              | 91/100 |
+
+![Résultats Lighthouse de la page d'accueil](docs/Lighthouse-accueil.png)
+
+### Lighthouse : page de jeu
+
+| Indicateur       |   Score |
+| ---------------- | ------: |
+| Performance      | 100/100 |
+| Accessibilité    |  98/100 |
+| Bonnes pratiques |  96/100 |
+| SEO              |  91/100 |
+
+![Résultats Lighthouse de la page de jeu](docs/Lighthouse-jeu.png)
 
 Attention, un audit Lighthouse automatisé ne garantit pas à lui seul une accessibilité complète. Ces scores sont à refaire si le code a changé depuis les mesures.
-
-### Résultats sur ordinateur
-
-![Résultats Lighthouse sur ordinateur](docs/Lighthouse-Desktop.png)
-
-### Résultats sur mobile
-
-![Résultats Lighthouse sur mobile](docs/Lighthouse-Mobile.png)
 
 ## FAQ
 
