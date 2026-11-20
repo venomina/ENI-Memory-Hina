@@ -32,7 +32,7 @@ Il ne valide pas encore les champs, ne vérifie pas la confirmation du mot
 de passe et ne crée pas de compte. De plus, l'attribut `novalidate` du
 formulaire désactive la validation native du navigateur.
 
-![Aperçu du jeu](ressources/screenshot-ecran-jeu.png)
+![Aperçu du site](ressources/screenshot-ecran-jeu.png)
 
 ## Statut du projet
 
@@ -56,6 +56,8 @@ formulaire désactive la validation native du navigateur.
 Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js).
 
 ## Guide d'utilisation
+
+![Aperçu du plateau de jeu](ressources/capture-visuel-jeu.png)
 
 ### Jouer
 
@@ -138,7 +140,7 @@ ENI-Memory-Hina/
 ## Accessibilité et audits Lighthouse
 
 Des audits Lighthouse ont été réalisés sur les versions ordinateur et mobile
-du site. Les deux captures présentent les mêmes résultats :
+du site. Les deux versions présentent les mêmes résultats :
 
 | Indicateur       | Ordinateur |  Mobile |
 | ---------------- | ---------: | ------: |
@@ -148,6 +150,8 @@ du site. Les deux captures présentent les mêmes résultats :
 | SEO              |     90/100 |  90/100 |
 
 Attention, un audit Lighthouse automatisé ne garantit pas à lui seul une accessibilité complète.
+
+![Résultats Lighthouse (ordinateur et mobile)](ressources/resultat-lighthouse.png)
 
 ### Résultats sur ordinateur
 
