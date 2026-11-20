@@ -37,30 +37,31 @@
       <p class="nbAttempts" aria-live="polite">Nombre de coups : 0</p>
 
       <!-- Plateau de jeu : 12 tuiles réparties sur 3 lignes de 4 colonnes.
-     Chaque tuile est un <button> (accessible au clavier) placé dans une
-     case <td>. memory.js lit les <td> dans l'ordre (index 0 à 11) ; les
-     id tile0 à tile11 ne sont pas utilisés par le script.
-     Toutes affichent le dos de tuile au départ. -->
+           Chaque tuile est un <button> (utilisable au clavier) placé dans une
+           case <td>. memory.js lit les <td> dans l'ordre (index 0 à 11) et
+           donne à chaque bouton un aria-label (l'image a un alt vide). Les id
+           tile0 à tile11 ne sont pas utilisés par le script.
+           Toutes affichent le dos de tuile au départ. -->
       <table>
         <!-- Ligne 1 : tuiles 0 à 3 -->
         <tr>
           <td>
-            <button type="button" class="tile" id="tile0">
+            <button type="button" id="tile0">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile1">
+            <button type="button" id="tile1">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile2">
+            <button type="button" id="tile2">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile3">
+            <button type="button" id="tile3">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
@@ -68,22 +69,22 @@
         <!-- Ligne 2 : tuiles 4 à 7 -->
         <tr>
           <td>
-            <button type="button" class="tile" id="tile4">
+            <button type="button" id="tile4">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile5">
+            <button type="button" id="tile5">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile6">
+            <button type="button" id="tile6">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile7">
+            <button type="button" id="tile7">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
@@ -91,22 +92,22 @@
         <!-- Ligne 3 : tuiles 8 à 11 -->
         <tr>
           <td>
-            <button type="button" class="tile" id="tile8">
+            <button type="button" id="tile8">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile9">
+            <button type="button" id="tile9">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile10">
+            <button type="button" id="tile10">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>
           <td>
-            <button type="button" class="tile" id="tile11">
+            <button type="button" id="tile11">
               <img src="ressources/question_bleus_pastel.svg" alt="" />
             </button>
           </td>

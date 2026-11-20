@@ -85,8 +85,14 @@ tiles.forEach((tile, index) => updateTileLabel(index, tilesBack));
 // Clic sur une tuile
 tiles.forEach((oneTile, index) => {
   oneTile.addEventListener("click", () => {
-    // Clic ignoré : jeu verrouillé, même tuile que la première, ou déjà trouvée
-    if (locked || index === firstIndex || oneTile.classList.contains("found")) {
+    // Clic ignoré : partie terminée, jeu verrouillé, même tuile que la première,
+    // ou tuile déjà trouvée
+    if (
+      gameOver ||
+      locked ||
+      index === firstIndex ||
+      oneTile.classList.contains("found")
+    ) {
       return;
     }
 
