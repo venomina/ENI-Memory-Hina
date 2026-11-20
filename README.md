@@ -40,7 +40,8 @@ formulaire désactive la validation native du navigateur.
 
 - [x] Jeu fonctionnel
 - [x] Pages et mise en forme
-- [ ] Validation complète du formulaire d'inscription
+- [x] Indicateur de force du mot de passe
+- [x] Validation complète du formulaire d'inscription
 - [ ] Connexion et sauvegarde des comptes
 - [ ] Sauvegarde des 5 meilleurs scores
 - [ ] Choix du thème et du nombre de tuiles dans le profil
@@ -73,20 +74,30 @@ Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js)
 
 ### Fonctions (`memory.js`)
 
-| Fonction                | Rôle                                                        | Retourne                  |
-| ----------------------- | ----------------------------------------------------------- | ------------------------- |
-| `mixGrid(tabFaces)`     | Mélange les images du tableau                               | Rien (modifie le tableau) |
-| `updateAttempts()`      | Met à jour l'affichage du nombre de coups                   | Rien                      |
-| `gameReset()`           | Remet le jeu à zéro et remélange les tuiles                 | Rien                      |
-| `cardFlip(img, newImg)` | Retourne une tuile avec une animation de 200 ms             | Rien                      |
-| Écouteur `keydown`      | Relance une partie avec la barre espace après une victoire. | Rien                      |
+| Fonction                          | Rôle                                                              | Retourne                  |
+| --------------------------------- | ----------------------------------------------------------------- | ------------------------- |
+| `mixGrid(tabFaces)`               | Mélange les images du tableau                                     | Rien (modifie le tableau) |
+| `updateAttempts()`                | Met à jour l'affichage du nombre de coups                         | Rien                      |
+| `updateTileLabel(index, faceSrc)` | Met à jour le nom accessible (`aria-label`) du bouton d'une tuile | Rien                      |
+| `tileFlip(img, newImg)`           | Retourne une tuile avec une animation de 200 ms                   | Rien                      |
+| `gameReset()`                     | Remet le jeu à zéro et remélange les tuiles                       | Rien                      |
+| Écouteur `click`                  | Gère le coup : retourne la tuile, compare la paire                | Rien                      |
+| Écouteur `keydown`                | Relance une partie avec la barre espace après une victoire        | Rien                      |
 
-| Fonction / élément   | Rôle                                                                                   | Retour                                          |
-| -------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| `getStrength(value)` | Estime la force du mot de passe à partir de sa longueur, d'un chiffre et d'un symbole. | Une chaîne : `"faible"`, `"moyen"` ou `"fort"`. |
-| `updateStrength()`   | Met à jour le niveau et le texte affichés sous le champ mot de passe.                  | Rien                                            |
-| Écouteur `input`     | Recalcule l'indicateur pendant la saisie en appelant `updateStrength()`.               | Rien                                            |
-| Écouteur `reset`     | Efface l'indicateur lors de la réinitialisation du formulaire.                         | Rien                                            |
+### Fonctions (`inscription.js`)
+
+| Fonction / élément                 | Rôle                                                                   | Retourne                                        |
+| ---------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------- |
+| `setState(input, isGood, message)` | Applique l'état d'un champ (valide, invalide ou neutre) et son message | Rien                                            |
+| `validateName()`                   | Vérifie le nom d'utilisateur (3 caractères minimum)                    | `true` si valide, sinon `false`                 |
+| `validateMail()`                   | Vérifie le format de l'adresse e-mail                                  | `true` si valide, sinon `false`                 |
+| `validatePassword()`               | Vérifie le mot de passe (6 caractères, un chiffre, un symbole)         | `true` si valide, sinon `false`                 |
+| `validatePasswordConfirm()`        | Vérifie que la confirmation est identique au mot de passe              | `true` si valide, sinon `false`                 |
+| `getStrength(value)`               | Estime la force du mot de passe (longueur, chiffre, symbole)           | Une chaîne : `"faible"`, `"moyen"` ou `"fort"`. |
+| `updateStrength()`                 | Met à jour le niveau (`data-level`) et le texte sous le champ          | Rien                                            |
+| Écouteurs `input`                  | Valident chaque champ pendant la saisie                                | Rien                                            |
+| Écouteur `submit`                  | Valide tous les champs et bloque l'envoi s'il reste une erreur         | Rien                                            |
+| Écouteur `reset`                   | Efface l'état des champs et l'indicateur lors de la réinitialisation   | Rien                                            |
 
 ### Pages du site
 
@@ -152,14 +163,6 @@ du site. Les deux versions présentent les mêmes résultats :
 Attention, un audit Lighthouse automatisé ne garantit pas à lui seul une accessibilité complète.
 
 ![Résultats Lighthouse (ordinateur et mobile)](ressources/resultat-lighthouse.png)
-
-### Résultats sur ordinateur
-
-![Résultats Lighthouse sur ordinateur](docs/Lighthouse-Desktop.png)
-
-### Résultats sur mobile
-
-![Résultats Lighthouse sur mobile](docs/Lighthouse-Mobile.png)
 
 ## FAQ
 
