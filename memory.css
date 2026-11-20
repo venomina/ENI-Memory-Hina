@@ -388,11 +388,31 @@ fieldset.memoryGame td:hover {
   border: 1px solid black;
 }
 
+/* Le bouton remplit toute la tuile, sans son style de bouton habituel */
+fieldset.memoryGame td button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
 /* Image carrée qui remplit toute la tuile */
 fieldset.memoryGame td img {
+  display: block; /* évite le petit espace sous l'image */
   width: 100%;
   height: auto;
   aspect-ratio: 1/1;
+}
+
+/* Repère visible quand on navigue au clavier */
+fieldset.memoryGame td:focus-within {
+  outline: 3px solid #4d90fe;
+  outline-offset: 2px;
+}
+
+fieldset.memoryGame td button:focus-visible {
+  outline: none; /* l'outline du td le remplace */
 }
 
 /* Animation de retournement (classe ajoutée par memory.js) */
