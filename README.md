@@ -14,6 +14,7 @@ Le joueur retourne les tuiles deux par deux pour retrouver les paires, avec le m
 - Compteur de coups joués et message de victoire
 - Animation de retournement des tuiles
 - Rejouer en appuyant sur la barre espace une fois la partie terminée
+- Jeu utilisable au clavier (Tab, puis Entrée ou Espace) et annoncé aux lecteurs d'écran (`aria-label`, `aria-live`)
 
 ![Aperçu du jeu](ressources/screenshot-ecran-jeu.png)
 
@@ -75,21 +76,22 @@ Aucune installation de dépendances n'est nécessaire (ni framework, ni Node.js)
 **Règles du jeu :**
 
 1. Allez sur la page **Jouer**.
-2. Cliquez sur deux tuiles : si les images sont identiques, elles restent visibles.
+2. Cliquez sur deux tuiles (ou naviguez avec Tab puis Entrée) : si les images sont identiques, elles restent visibles.
 3. Sinon, elles se retournent face cachée.
 4. La partie se termine quand toutes les paires sont trouvées.
 5. Appuyez sur la barre espace pour relancer une partie.
 
 ### Fonctions (`memory.js`)
 
-| Fonction                | Rôle                                                       | Retourne                  |
-| ----------------------- | ---------------------------------------------------------- | ------------------------- |
-| `mixGrid(tabFaces)`     | Mélange les images du tableau                              | Rien (modifie le tableau) |
-| `updateAttempts()`      | Met à jour l'affichage du nombre de coups                  | Rien                      |
-| `cardFlip(img, newImg)` | Retourne une tuile avec une animation de 200 ms            | Rien                      |
-| `gameReset()`           | Remet le jeu à zéro et remélange les tuiles                | Rien                      |
-| Écouteur `click`        | Gère le coup : retourne la tuile, compare la paire         | Rien                      |
-| Écouteur `keydown`      | Relance une partie avec la barre espace après une victoire | Rien                      |
+| Fonction                          | Rôle                                                              | Retourne                  |
+| --------------------------------- | ----------------------------------------------------------------- | ------------------------- |
+| `mixGrid(tabFaces)`               | Mélange les images du tableau                                     | Rien (modifie le tableau) |
+| `updateAttempts()`                | Met à jour l'affichage du nombre de coups                         | Rien                      |
+| `updateTileLabel(index, faceSrc)` | Met à jour le nom accessible (`aria-label`) du bouton d'une tuile | Rien                      |
+| `tileFlip(img, newImg)`           | Retourne une tuile avec une animation de 200 ms                   | Rien                      |
+| `gameReset()`                     | Remet le jeu à zéro et remélange les tuiles                       | Rien                      |
+| Écouteur `click`                  | Gère le coup : retourne la tuile, compare la paire                | Rien                      |
+| Écouteur `keydown`                | Relance une partie avec la barre espace après une victoire        | Rien                      |
 
 ### Fonctions (`inscription.js`)
 
@@ -151,7 +153,6 @@ ENI-Memory-Hina/
 | Le formulaire d'inscription ne valide pas encore les champs en JS                             | En cours                               |
 | La connexion et le profil sont des maquettes                                                  | Prévu                                  |
 | Les formulaires envoient en `post` vers des pages statiques (erreur « Cannot POST » en local) | Prévu (nécessite un back-end ou du JS) |
-| Les tuiles ne sont pas utilisables au clavier (cases `<td>` sans élément interactif)          | À corriger                             |
 
 ## Accessibilité et audits Lighthouse
 
